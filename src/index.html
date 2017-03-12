@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="stylesheet" href="css/layout.css">
+<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>-->
+<script src="libs/moment-with-locales.js"></script>
+<script src="./main.js"></script>
+<script src="./services.js"></script>
+
+<body>
+	<div ng-app="myApp" ng-cloak ng-controller="myCtrl" class="w3-card-2 w3-margin">
+		<div class="container">
+			<div class="logo">
+				<img class="img" src="images/logo.jpg">
+			</div>
+			<select id="an">
+				<option>2016</option>
+				<option>2015</option>
+			</select>
+			<select id="luna">
+			<option value="1" >ianuarie</option>
+			<option value="2">februarie</option>
+			</select>
+        <select id="zi">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        
+			<div class="errorMessage" ng-show="error">
+				<span>{{errorMessage}}</span>
+			</div>
+			<div class="tweetsContainer">
+				<span id="values"></span>
+				<!--<div class="singletweet" ng-repeat="data in datas"  ng-hide="data.retweeted_status">
+					<div class="hideDetails" ng-click="detailsControl(data)">
+						<img  src="{{data.icon}}">
+					</div>
+					<table class="table">
+						<tr>
+							<th>
+								<div >
+									<img class="userIcon" src="{{data.user.profile_image_url}}">
+								</div>
+							</th>
+							<th>
+								<span> {{data.user.name}}</span>
+								<br>
+								<span class="user"> @{{data.user.screen_name}}</span>
+								<img  src="images/dot.png">
+								<span class="user"> {{data.created_at}}</span>
+							</th> 
+						</tr>
+					</table>
+					<div class="{{data.classN}}">
+						<span>{{data.text}}</span>
+						<br>
+						<div ng-repeat="url in data.entities.urls">
+							<a target="_blank" href="{{url.expanded_url}}"> {{url.display_url}} </a>
+						</div>
+						<div ng-repeat="media in data.extended_entities.media">
+							<img  class="tweetImmage" src="{{media.media_url_https}}">
+							<br>
+							<div>
+								<span><img class="likeRetweet" src="images/retweet.png"></span>
+								<span class="likeRetweetText">{{data.retweet_count}}</span>
+								<span><img class="likeRetweet" src="images/like.png"></span>
+								<span class="likeRetweetText">{{data.favorite_count}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="{{data.classO}}">
+						<div class="longText" >
+							<span >{{data.text}}</span>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

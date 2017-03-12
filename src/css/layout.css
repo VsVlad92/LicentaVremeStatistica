@@ -1,0 +1,131 @@
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: rgb(244, 248, 251);
+}
+
+.container{
+	height: 50rem;
+    width: 30rem;
+    margin: 10px auto;
+    position: relative;
+}
+	.container .logo {
+		position: absolute;
+    	left: 31%;
+    	top: 5%;
+	}
+		.container .logo .img{
+			height: 100px;
+		}
+		
+	.container .searchBar {
+		float: left;
+	    position: absolute;
+	    top: 20%;
+	}
+	
+		.container .searchBar .inputField{
+		 	width: 21rem;
+    		font-size: 20px;
+    		padding-left: 11px;
+		    height: 46px;
+		    box-shadow: none;
+		    border-radius: 0;
+		    border: none;
+		}
+
+		.container .searchBar button{
+			width: 8rem;
+		    margin-left: -3px;
+			background-color: rgba(74, 188, 230, 1);
+			font-size: 20px;
+			height: 50px;
+		    box-shadow: none;
+		    border-radius: 0px 5px 5px 0px;
+		    border: none;
+		    color: rgb(255, 255, 255);
+		}
+
+				.container .searchBar button:hover{
+					width: 8rem;
+					margin-left: -3px;
+					background-color: rgba(94, 188, 230, 1);;
+					font-size: 20px;
+					height: 50px;
+					box-shadow: none;
+					border-radius: 0px 5px 5px 0px;
+					border: none;
+					color: rgb(255, 255, 255);
+				}
+
+	.container .tweetsContainer{
+		top: 28%;
+		position: absolute;
+	}
+
+	.container .errorMessage{
+		top: 28%;
+		position: absolute;
+		color: red;
+	}
+
+	.container .singletweet{
+		width: 29rem;
+		padding: 10px;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		background-color: rgb(255, 255, 255);
+		box-shadow: 0px 0px 3px 2px rgba(119, 119, 119, 0.2);
+		-moz-box-shadow: 0px 0px 3px 2px rgba(119, 119, 119, 0.2);
+		-webkit-box-shadow: 0px 0px 3px 2px rgba(119, 119, 119, 0.2);
+
+		border-radius: 4px;
+	}
+
+.table{
+	text-align: left;
+}
+
+	.table .user{
+		font-weight: normal;
+	}
+
+	.table .userIcon{
+		border-radius: 2px;
+	}
+
+.hideDetails{
+	float: right;
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+.hide{
+	display: none;
+}
+
+.longText{
+	width: 29rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.tweetImmage{
+	width: 28rem;
+    border-radius: 16px;
+    padding: 6px;
+}
+
+a{
+	color: rgba(74, 188, 230, 1);
+	text-decoration: none;
+}
+.likeRetweet{
+	    margin-bottom: -8px;
+}
+
+.likeRetweetText{
+	color: grey;
+}
