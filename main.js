@@ -48,7 +48,7 @@
         }); 
       }
     function year(){
-        for (var i = new Date().getFullYear(); i > 1900; i--)
+        for (var i = new Date().getFullYear(); i > 1960; i--)
         {
             $('#an').append($('<option />').val(i).html(i));
         }
@@ -71,10 +71,17 @@
             $('#zi').append($('<option />').val(i).html(i))
          }
        }
-        // for (var i = 1; i <= 31; i++)
-        // {
-        //     $('#zi').append($('<option />').val(i).html(i));
-        // }
+          if(($('#luna').val()==2) && (bisect($('#an').val())) ){
+
+              for (var i = 1; i <= 29; i++){
+                $('#zi').append($('<option />').val(i).html(i))
+              }
+       }
+       else{
+         for (var i = 1; i <= 28; i++){
+                $('#zi').append($('<option />').val(i).html(i))
+              }
+       }
     }
   year();
   $('#luna')[0].style.display="none";
@@ -82,7 +89,9 @@
 
   $('#an').change(function(){
     var an = $('#an').val();
-    get_url("http://data.gov.ro/dataset/f649bad3-aa57-43ba-bf9e-bd8e9edde3f4/resource/4419b08f-4b1a-45fc-b88f-822bdacbe02d/download/climrbsn"+an+".csv");
+    console.log("An cerut ",an);
+    console.log(reqObj[an]);
+    get_url(reqObj[an]);
   })
 
   $('#luna').change(function(){
@@ -93,30 +102,290 @@
   $('#zi').change(function(){
      $("#values").empty();
      var luna = $('#luna').val();
+     console.log($("#luna").val())
      switch(luna) {
           case "1":
             console.log("ianuarie");
             var q = 0;
-             $("#values").append("<p>"+ data[parseInt($('#zi').val())-1].DATCLIM + " "+ data[parseInt($('#zi').val())-1].CODST + " "+ data[parseInt($('#zi').val())-1].TMAX+" Grade celsius</p>");
+            var x = parseInt($('#zi').val())-1;
+            console.log(data[q].DATCLIM , " ",data[q].CODST, " ",  data[q].TMAX )
+             //$("#values").append("<p>"+ data[parseInt($('#zi').val())-1].DATCLIM + " "+ data[parseInt($('#zi').val())-1].CODST + " "+ data[parseInt($('#zi').val())-1].TMAX+" Grade celsius</p>");
             for(var i=1; i<23 ; i++){
-              q = q+366;
-              $("#values").append("<p>"+ data[parseInt($('#zi').val()) -1 + q].DATCLIM + " "+ data[parseInt($('#zi').val()) -1 + q].CODST +" "+ data[parseInt($('#zi').val())-1 + q].TMAX+" Grade celsius</p>");
+              if(bisect($('#an').val())){
+                  q = q+366;
+                }
+                else{
+                  q = q +365;
+                }
+                console.log(data[q +x ].DATCLIM , " ",data[q +x].CODST, " ",  data[q+ x ].TMAX )
+              //$("#values").append("<p>"+ data[parseInt($('#zi').val()) -1 + q].DATCLIM + " "+ data[parseInt($('#zi').val()) -1 + q].CODST +" "+ data[parseInt($('#zi').val())-1 + q].TMAX+" Grade celsius</p>");
             }
               break;
           case "2":
-            console.log("februarie")
-            var x = parseInt($('#zi').val()) + 30;
+             var x = parseInt($('#zi').val()) + 30;
              var q = 0;
-             $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+             console.log("februarie",q , "   " , x );
+             console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+             //$("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
                for(var i=1; i<23 ; i++){
+                if(bisect($('#an').val())){
                   q = q+366;
-                  $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                }
+                else{
+                  q = q +365;
+                }
+                console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                  //$("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
                }
               break;
+          case "3":
+            console.log("martie")
+            var x = parseInt($('#zi').val()) + 30;
+             var q = 0;
+              if(bisect($('#an').val())){
+                  q = 29;
+                }
+                else{
+                  q = 28;
+                }
+                 console.log("martie",q , "   " , x );
+               console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+             $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+               for(var i=1; i<23 ; i++){
+               if(bisect($('#an').val())){
+                  q = q+366;
+                }
+                else{
+                  q = q +365;
+                }
+                  // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                  console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+               }
+              break;
+          case "4":
+            console.log("aprilie")
+            var x = parseInt($('#zi').val()) + 30;
+            var q = 0;
+             if(bisect($('#an').val())){
+                  q = 60;
+                }
+                else{
+                  q = 59;
+                }
+            console.log("aprilie",q , "   " , x );
+              console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+            $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+              for(var i=1; i<23 ; i++){
+               if(bisect($('#an').val())){
+                  q = q+366;
+                }
+                else{
+                  q = q +365;
+                }
+                  // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                  console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+              }
+              break;
+           case "5":
+              console.log("mai")
+              var x = parseInt($('#zi').val()) + 30;
+              var q = 0;
+                if(bisect($('#an').val())){
+                  q = 90;
+                }
+                else{
+                  q = 89;
+                }
+              console.log("aprilie",q , "   " , x );
+                console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+              $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+                for(var i=1; i<23 ; i++){
+                if(bisect($('#an').val())){
+                    q = q+366;
+                  }
+                  else{
+                    q = q +365;
+                  }
+                    // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                    console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                }
+                break;
+                case "6":
+                  console.log("iunie")
+                  var x = parseInt($('#zi').val()) + 30;
+                  var q = 0;
+                    if(bisect($('#an').val())){
+                      q = 121;
+                    }
+                    else{
+                      q = 120;
+                    }
+                  console.log("iunie",q , "   " , x );
+                  console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                  $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect($('#an').val())){
+                        q = q+366;
+                      }
+                      else{
+                        q = q +365;
+                      }
+                        // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                        console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                    }
+                break;
+                case "7":
+                  console.log("iulie")
+                  var x = parseInt($('#zi').val()) + 30;
+                  var q = 0;
+                    if(bisect($('#an').val())){
+                      q = 151;
+                    }
+                    else{
+                      q = 150;
+                    }
+                  console.log("iulie",q , "   " , x );
+                  console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                  $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect($('#an').val())){
+                        q = q+366;
+                      }
+                      else{
+                        q = q +365;
+                      }
+                        // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                        console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                    }
+                break;
+
+                case "8":
+                  console.log("august")
+                  var x = parseInt($('#zi').val()) + 30;
+                  var q = 0;
+                    if(bisect($('#an').val())){
+                      q = 182;
+                    }
+                    else{
+                      q = 181;
+                    }
+                  console.log("august",q , "   " , x );
+                    console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                  $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect($('#an').val())){
+                        q = q+366;
+                      }
+                      else{
+                        q = q +365;
+                      }
+                        // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                        console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                    }
+                break;
+                
+                case "9":
+                  console.log("septembrie")
+                  var x = parseInt($('#zi').val()) + 30;
+                  var q = 0;
+                    if(bisect($('#an').val())){
+                      q = 213;
+                    }
+                    else{
+                      q = 212;
+                    }
+                  console.log("septembrie",q , "   " , x );
+                    console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                  $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect($('#an').val())){
+                        q = q+366;
+                      }
+                      else{
+                        q = q +365;
+                      }
+                        // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                        console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                    }
+                break;
+                
+                case "10":
+                  console.log("octombrie")
+                  var x = parseInt($('#zi').val()) + 30;
+                  var q = 0;
+                    if(bisect($('#an').val())){
+                      q = 243;
+                    }
+                    else{
+                      q = 242;
+                    }
+                  console.log("octombrie",q , "   " , x );
+                    console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                  $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect($('#an').val())){
+                        q = q+366;
+                      }
+                      else{
+                        q = q +365;
+                      }
+                        // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                        console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                    }
+                break;
+
+                case "11":
+                  console.log("noiembrie")
+                  var x = parseInt($('#zi').val()) + 30;
+                  var q = 0;
+                    if(bisect($('#an').val())){
+                      q = 274;
+                    }
+                    else{
+                      q = 273;
+                    }
+                  console.log("noimebrie",q , "   " , x );
+                    console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                  $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect($('#an').val())){
+                        q = q+366;
+                      }
+                      else{
+                        q = q +365;
+                      }
+                        // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                        console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                    }
+                break;
+
+                case "12":
+                  console.log("decembrie")
+                  var x = parseInt($('#zi').val()) + 30;
+                  var q = 0;
+                    if(bisect($('#an').val())){
+                      q = 304;
+                    }
+                    else{
+                      q = 303;
+                    }
+                  console.log("decembrie",q , "   " , x );
+                    console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                  $("#values").append("<p>"+ data[x].DATCLIM + " "+ data[x].CODST + " " + data[x].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect($('#an').val())){
+                        q = q+366;
+                      }
+                      else{
+                        q = q +365;
+                      }
+                        // $("#values").append("<p>"+ data[x+q].DATCLIM + " "+ data[x+q].CODST + " "+ data[x+q].TMAX+" Grade celsius</p>");
+                        console.log(data[x+q].DATCLIM , " ",data[x+q].CODST, " ",  data[x+q].TMAX )
+                    }
+                break;
           default:
             console.log("?");
       }
-   //  $("#values").append("<p>"+ dataNew[$('#zi').val()].DATCLIM + " "+ dataNew[$('#zi').val()].TMAX +"</p>");
   })
   
   

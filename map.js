@@ -3,6 +3,7 @@
 			attr = {
 				"id": 'harta',
 				"fill": "#e0e7f1",
+				"fill-opacity":"0.4",
 				"stroke": "#7c8892",
 				"stroke-width": 1,
 				"stroke-linejoin": "round"
