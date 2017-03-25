@@ -50,3 +50,8 @@ a{
 .likeRetweetText{
 	color: grey;
 }
+svg{
+	z-index: 9999;
+	overflow: hidden;
+	position: relative;
+}

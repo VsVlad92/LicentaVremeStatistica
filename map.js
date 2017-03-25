@@ -1,6 +1,5 @@
 		
-			var wikiURL = 'http://ro.wikipedia.org/wiki/Județul_',
-			R = Raphael("harta", 600, 500),
+			var R = Raphael("harta", 600, 500),
 			attr = {
 				"id": 'harta',
 				"fill": "#e0e7f1",
