@@ -112,30 +112,31 @@
 				}).click(function(e){e.preventDefault()});
 				
 				st.hover(
-					function(){
-							if ( !$(this[0]).attr('sel') ) st.animate({fill: st.color}, 200);
-							R.safari();
-							$(judet).css('display','block');
-						},
-						function(){
-							if ( !$(this[0]).attr('sel') ) st.animate({fill: "#e0e7f1"}, 200);
-							R.safari();
-						}
+					//function()
+					// {
+					// 		if ( !$(this[0]).attr('sel') ) st.animate({fill: st.color}, 200);
+					// 		R.safari();
+					// 		$(judet).css('display','block');
+					// 	},
+					// 	function(){
+					// 		if ( !$(this[0]).attr('sel') ) st.animate({fill: "#e0e7f1"}, 200);
+					// 		R.safari();
+					// 	}
 					)
 						
 					.click(function(){
-						var t = $(this[0]);
-						if (t.attr('sel')) return;
-						st.animate({fill:'#aad1f2'}, 100);
+						// var t = $(this[0]);
+						// if (t.attr('sel')) return;
+						// st.animate({fill:'#aad1f2'}, 100);
 						
-						$.each(ro, function(){
-							if (this != st) {
-								this.animate({fill: "#e0e7f1"}, 100)
-							}
-						})
+						// $.each(ro, function(){
+						// 	if (this != st) {
+						// 		this.animate({fill: "#e0e7f1"}, 100)
+						// 	}
+						// })
 						
-						t.attr('sel', true).parent().siblings().find('path').removeAttr('sel')
-						R.safari();
+						// t.attr('sel', true).parent().siblings().find('path').removeAttr('sel')
+						// R.safari();
 						Display(judete[judet]);
 					});
 				
@@ -159,7 +160,7 @@
 				if (judet == 'il') {top = top  * 1.02; left = left * 1.06}
 				
 				ro[judet].judete = R
-						.text( left, top, judet.toUpperCase() )
+						.text( left, top,"" )
 						.attr({
 								fill: '#47555c',
 								font: 'bold 10px arial,helvetica,sans-serif'
