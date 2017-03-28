@@ -45,6 +45,57 @@ function initMap() {
           });
          })
 
+         var icons = {
+          temp1: {
+            name: '-5',
+            color: "#FFFFFF"
+          },
+          temp2: {
+            name: '-5 - 0',
+            color: "#E1F6FB"
+          },
+          temp3: {
+            name: '0-5',
+            color: "#BCEEFB"
+          },
+          temp4: {
+            name: '5 - 10',
+            color: "#B9ECD8"
+          },
+          temp5: {
+            name: '10 - 15',
+            color: "#CADB92"
+          },
+          temp6: {
+            name: '15 - 20',
+            color: "#FFEB88"
+          },
+          temp7: {
+            name: '20 - 25',
+            color: "#FBC25E"
+          },
+          temp8: {
+            name: '30 - 35',
+            color: "#FF7B33"
+          },
+          temp9: {
+            name: '35 - 40',
+            color: "#CD5B12"
+          },
+        };
+
+         var legend = document.getElementById('legend');
+        for (var key in icons) {
+          var type = icons[key];
+          var name = type.name;
+          var color = type.color;
+          var div = document.createElement('div');
+          div.innerHTML = '<span style=background-color:'+ color + '>'+ name +'C</span> ';
+          legend.appendChild(div);
+        }
+
+        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
 
 }
 
