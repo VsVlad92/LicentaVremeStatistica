@@ -50,9 +50,7 @@ a{
 .likeRetweetText{
 	color: grey;
 }
-svg{
-	z-index: 9999;
-	overflow: hidden;
-	position: relative;
-	opacity: 0.88;
-}
+
+ #map {
+        height: 100%;
+      }
