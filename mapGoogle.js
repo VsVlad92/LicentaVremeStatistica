@@ -1,5 +1,6 @@
 
 var map;
+var cityCircle;
 
 function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -7,6 +8,9 @@ function initMap() {
             zoom: 7,
             mapTypeId: 'terrain'
         });
+        var infoWindow = new google.maps.InfoWindow({
+            maxWidth: 500
+        }); 
 
         var heatMapData =[];
         var i=0;
@@ -36,6 +40,7 @@ function initMap() {
           heatMapData.forEach(function(statie,index){
             // Add the circle for this city to the map.
             var cityCircle = new google.maps.Circle({
+              id:i,
               strokeColor: setColor(todisplay[i].TMAX),
               strokeOpacity: 0.6,
               strokeWeight: 2,
@@ -45,6 +50,17 @@ function initMap() {
               center: statie.center,
               radius: Math.sqrt(statie.weight) * 100
             });
+            infoWindow.content = "asdasd";
+            google.maps.event.addListener(cityCircle, 'click', function(ev) {
+                console.log(this.id);
+                var infoWindow = new google.maps.InfoWindow({
+                      content : "<p>"+todisplay[this.id].TMAX+"</p>",
+                      maxWidth: 500
+                }); 
+                infoWindow.setPosition(ev.latLng);
+                infoWindow.open(map);
+            });
+
             console.log(setColor(todisplay[i].TMAX))
             i++;
           })

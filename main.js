@@ -103,6 +103,7 @@ $('#luna').change(function(){
 })
 var todisplay =[];
 $('#zi').change(function(){
+    $("#show")[0].style.display="";
     $("#values").empty();
     var luna = $('#luna').val();
     console.log($("#luna").val())
