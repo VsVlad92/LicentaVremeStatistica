@@ -66,3 +66,7 @@ a{
 	background-color: red;
 	margin:3px
 }
+.legend{
+	display: block;
+    text-align: center;
+}

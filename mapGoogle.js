@@ -9,43 +9,48 @@ function initMap() {
         });
 
         var heatMapData =[];
+        var i=0;
         statiiMeteo.forEach(function(statie,index){
-           var z = {
+          // todisplay[i]
+          if(todisplay[i] != undefined){ 
+            var z = {
+               Cod: todisplay[i].CODST,
+               Tmax: todisplay[i].TMAX,
                center: {lat: statie.lat, lng : statie.lon},
                weight: 99999
            }
+          }else {
+            var z = {
+                center: {lat: statie.lat, lng : statie.lon},
+                weight: 99999
+            }
+           }
+           i++;
            heatMapData.push(z);
         })
         console.log(heatMapData);
-        // statiiMeteo.forEach(function(statie){
-        //         var latLng = new google.maps.LatLng(statie.lat,statie.lon);
-        //         var marker = new google.maps.Marker({
-        //         position: latLng,
-        //         map: map
-        //     })
-        // })
-
-
-        // var heatmap = new google.maps.visualization.HeatmapLayer({
-        //     data: heatMapData
-        // });
         
         //heatmap.setMap(map);
-        heatMapData.forEach(function(statie,index){
-          // Add the circle for this city to the map.
-          var cityCircle = new google.maps.Circle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.35,
-            map: map,
-            center: statie.center,
-            radius: Math.sqrt(statie.weight) * 100
-          });
-         })
+        var i=0;
+         if(todisplay[i] != undefined){ 
+          heatMapData.forEach(function(statie,index){
+            // Add the circle for this city to the map.
+            var cityCircle = new google.maps.Circle({
+              strokeColor: setColor(todisplay[i].TMAX),
+              strokeOpacity: 0.6,
+              strokeWeight: 2,
+              fillColor: setColor(todisplay[i].TMAX),
+              fillOpacity: 0.35,
+              map: map,
+              center: statie.center,
+              radius: Math.sqrt(statie.weight) * 100
+            });
+            console.log(setColor(todisplay[i].TMAX))
+            i++;
+          })
+         }
 
-         var icons = {
+        var icons = {
           temp1: {
             name: '-5',
             color: "#FFFFFF"
@@ -84,18 +89,47 @@ function initMap() {
           },
         };
 
-         var legend = document.getElementById('legend');
-        for (var key in icons) {
-          var type = icons[key];
-          var name = type.name;
-          var color = type.color;
-          var div = document.createElement('div');
-          div.innerHTML = '<span style=background-color:'+ color + '>'+ name +'C</span> ';
-          legend.appendChild(div);
-        }
+        var bool = true;
+        var legend = document.getElementById('legend');
+       // if(bool){
+          for (var key in icons) {
+            var type = icons[key];
+            var name = type.name;
+            var color = type.color;
+            var div = document.createElement('div');
+            div.innerHTML = '<span class=legend style=background-color:'+ color + '>'+ name +'</span> ';
+            legend.appendChild(div);
+          }
+           bool = false;
+            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+       // }
 
-        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+       
 
+
+}
+
+function setColor(nr){
+  if( nr <= -5)
+    return "#FFFFFF"
+  if( nr >= -5 && nr < 0)
+    return "#E1F6FB"
+  if( nr >= 0 && nr < 5)
+    return "#BCEEFB"
+  if( nr >= 5 && nr < 10)
+    return "#B9ECD8"  
+  if( nr >= 10 && nr < 15)
+    return "#CADB92"  
+  if( nr >= 15 && nr < 20)
+    return "#FFEB88" 
+  if( nr >= 20 && nr < 25)
+    return "#FBC25E" 
+  if( nr >= 25 && nr < 30)
+    return "#FF7B33"  
+  if( nr >= 30 && nr < 35)
+    return "#CD5B12" 
+  if( nr >= 35 )
+    return "#cc5408"   
 
 }
 
