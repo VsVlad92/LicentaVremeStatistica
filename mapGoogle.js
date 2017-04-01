@@ -60,12 +60,12 @@ function initMap() {
             google.maps.event.addListener(cityCircle, 'click', function(ev) {
                 console.log(this.id);
                 var infoWindow = new google.maps.InfoWindow({
-                      content : '<p><strong>Numele Statiei Meteo</strong>: '+heatMapData[this.id].Name+'</p>'+
+                      content : '<div class=><p><strong>Numele Statiei Meteo</strong>: '+heatMapData[this.id].Name+'</p>'+
                                 '<p><strong>Temperatura Maxima a zilei</strong>: '+heatMapData[this.id].Tmax+' C</p>'+
                                 '<p><strong>Temperatura Minima a zilei</strong>: '+heatMapData[this.id].Tmin+' C</p>'+
                                 '<p><strong>Temperatura Medie a zilei</strong>: '+heatMapData[this.id].Tmed+' C</p>'+
                                 '<p><strong>Altitudinea Statiei Meteo</strong>: '+heatMapData[this.id].Alt+'m</p>' +
-                                '<p><strong>Data</strong>: '+heatMapData[this.id].Data+'</p>'
+                                '<p><strong>Data</strong>: '+heatMapData[this.id].Data+'</p></div>'
                                 ,
                       maxWidth: 500
                 }); 
@@ -117,9 +117,8 @@ function initMap() {
           },
         };
 
-        var bool = true;
         var legend = document.getElementById('legend');
-        if(bool){
+        if(legend){
           for (var key in icons) {
             var type = icons[key];
             var name = type.name;
@@ -128,7 +127,6 @@ function initMap() {
             div.innerHTML = '<span class=legend style=background-color:'+ color + '>'+ name +'</span> ';
             legend.appendChild(div);
           }
-           bool = false;
             map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
         }
   }
