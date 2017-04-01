@@ -18,6 +18,11 @@ function initMap() {
           // todisplay[i]
           if(todisplay[i] != undefined){ 
             var z = {
+               Data: todisplay[i].DATCLIM,
+               Alt: todisplay[i].ALT,
+               Tmed: todisplay[i].TMED,
+               Tmin: todisplay[i].TMIN,
+               Name: statie.name,
                Cod: todisplay[i].CODST,
                Tmax: todisplay[i].TMAX,
                center: {lat: statie.lat, lng : statie.lon},
@@ -50,11 +55,17 @@ function initMap() {
               center: statie.center,
               radius: Math.sqrt(statie.weight) * 100
             });
-            infoWindow.content = "asdasd";
+
             google.maps.event.addListener(cityCircle, 'click', function(ev) {
                 console.log(this.id);
                 var infoWindow = new google.maps.InfoWindow({
-                      content : "<p>"+todisplay[this.id].TMAX+"</p>",
+                      content : '<p><strong>Numele Statiei Meteo</strong>: '+heatMapData[this.id].Name+'</p>'+
+                                '<p><strong>Temperatura Maxima a zilei</strong>: '+heatMapData[this.id].Tmax+' C</p>'+
+                                '<p><strong>Temperatura Minima a zilei</strong>: '+heatMapData[this.id].Tmin+' C</p>'+
+                                '<p><strong>Temperatura Medie a zilei</strong>: '+heatMapData[this.id].Tmed+' C</p>'+
+                                '<p><strong>Altitudinea Statiei Meteo</strong>: '+heatMapData[this.id].Alt+'m</p>' +
+                                '<p><strong>Data</strong>: '+heatMapData[this.id].Data+'</p>'
+                                ,
                       maxWidth: 500
                 }); 
                 infoWindow.setPosition(ev.latLng);
@@ -107,7 +118,7 @@ function initMap() {
 
         var bool = true;
         var legend = document.getElementById('legend');
-       // if(bool){
+        if(bool){
           for (var key in icons) {
             var type = icons[key];
             var name = type.name;
@@ -118,12 +129,8 @@ function initMap() {
           }
            bool = false;
             map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
-       // }
-
-       
-
-
-}
+        }
+  }
 
 function setColor(nr){
   if( nr <= -5)

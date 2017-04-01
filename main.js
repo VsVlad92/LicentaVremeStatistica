@@ -117,6 +117,9 @@ $('#zi').change(function(){
             elem.DATCLIM = data[valZi+q].DATCLIM;
             elem.CODST = data[valZi+q].CODST;
             elem.TMAX = data[valZi+q].TMAX;
+            elem.ALT = data[valZi+q].ALT;
+            elem.TMED = data[valZi+q].TMED;
+            elem.TMIN = data[valZi+q].TMIN;
             todisplay.push(elem);
           console.log(data[q].DATCLIM , " ",data[q].CODST, " ",  data[q].TMAX  )
             //$("#values").append("<p>"+ data[parseInt($('#zi').val())-1].DATCLIM + " "+ data[parseInt($('#zi').val())-1].CODST + " "+ data[parseInt($('#zi').val())-1].TMAX+" Grade celsius</p>");
@@ -131,6 +134,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);  
               console.log(data[q +valZi ].DATCLIM , " ",data[q +valZi].CODST, " ",  data[q+ valZi ].TMAX )
             //$("#values").append("<p>"+ data[parseInt($('#zi').val()) -1 + q].DATCLIM + " "+ data[parseInt($('#zi').val()) -1 + q].CODST +" "+ data[parseInt($('#zi').val())-1 + q].TMAX+" Grade celsius</p>");
@@ -143,8 +149,11 @@ $('#zi').change(function(){
             todisplay = [];
             var elem = {}
             elem.DATCLIM = data[valZi+q].DATCLIM;
-            elem.CODST = data[valZi+q].CODST;
-            elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
             todisplay.push(elem);
             console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX)
             $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
@@ -159,6 +168,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);  
 
               //console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -179,8 +191,11 @@ $('#zi').change(function(){
               todisplay = [];
             var elem = {}
             elem.DATCLIM = data[valZi+q].DATCLIM;
-            elem.CODST = data[valZi+q].CODST;
-            elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
             todisplay.push(elem);
                 console.log("martie",q , "   " , valZi );
               console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -196,6 +211,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);  
                 // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                 console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -214,8 +232,11 @@ $('#zi').change(function(){
             todisplay = [];
             var elem = {}
             elem.DATCLIM = data[valZi+q].DATCLIM;
-            elem.CODST = data[valZi+q].CODST;
-            elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
             todisplay.push(elem);
           console.log("aprilie",q , "   " , valZi );
             console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -231,6 +252,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                 // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                 console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -249,8 +273,11 @@ $('#zi').change(function(){
             todisplay = [];
             var elem = {}
             elem.DATCLIM = data[valZi+q].DATCLIM;
-            elem.CODST = data[valZi+q].CODST;
-            elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
             todisplay.push(elem);
             console.log("aprilie",q , "   " , valZi );
               console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -266,6 +293,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                   // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -284,8 +314,11 @@ $('#zi').change(function(){
                 todisplay = [];
                 var elem = {}
                 elem.DATCLIM = data[valZi+q].DATCLIM;
-                elem.CODST = data[valZi+q].CODST;
-                elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                 todisplay.push(elem);
                 console.log("iunie",q , "   " , valZi );
                 console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -301,6 +334,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                       // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -319,8 +355,11 @@ $('#zi').change(function(){
                 todisplay = [];
                 var elem = {}
                 elem.DATCLIM = data[valZi+q].DATCLIM;
-                elem.CODST = data[valZi+q].CODST;
-                elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                 todisplay.push(elem);
                 console.log("iulie",q , "   " , valZi );
                 console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -336,6 +375,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                       // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -355,8 +397,11 @@ $('#zi').change(function(){
                 todisplay = [];
                 var elem = {}
                 elem.DATCLIM = data[valZi+q].DATCLIM;
-                elem.CODST = data[valZi+q].CODST;
-                elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                 todisplay.push(elem);
                 console.log("august",q , "   " , valZi );
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -372,6 +417,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                       // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -391,8 +439,11 @@ $('#zi').change(function(){
                   todisplay = [];
                 var elem = {}
                 elem.DATCLIM = data[valZi+q].DATCLIM;
-                elem.CODST = data[valZi+q].CODST;
-                elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                 todisplay.push(elem);
                 console.log("septembrie",q , "   " , valZi );
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -408,6 +459,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                       // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -427,8 +481,11 @@ $('#zi').change(function(){
                 todisplay = [];
                 var elem = {}
                 elem.DATCLIM = data[valZi+q].DATCLIM;
-                elem.CODST = data[valZi+q].CODST;
-                elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                 todisplay.push(elem);
                 console.log("octombrie",q , "   " , valZi );
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -444,6 +501,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                       // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -463,8 +523,11 @@ $('#zi').change(function(){
                 todisplay = [];
                 var elem = {}
                 elem.DATCLIM = data[valZi+q].DATCLIM;
-                elem.CODST = data[valZi+q].CODST;
-                elem.TMAX = data[valZi+q].TMAX;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                 todisplay.push(elem);
                 console.log("noimebrie",q , "   " , valZi );
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -480,6 +543,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                       // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -498,9 +564,12 @@ $('#zi').change(function(){
                   }
                 todisplay = [];
                 var elem = {}
-                elem.DATCLIM = data[valZi+q].DATCLIM;
-                elem.CODST = data[valZi+q].CODST;
-                elem.TMAX = data[valZi+q].TMAX;
+               elem.DATCLIM = data[valZi+q].DATCLIM;
+               elem.CODST = data[valZi+q].CODST;
+               elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                 todisplay.push(elem);
                 console.log("decembrie",q , "   " , valZi );
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
@@ -516,6 +585,9 @@ $('#zi').change(function(){
                elem.DATCLIM = data[valZi+q].DATCLIM;
                elem.CODST = data[valZi+q].CODST;
                elem.TMAX = data[valZi+q].TMAX;
+               elem.ALT = data[valZi+q].ALT;
+               elem.TMED = data[valZi+q].TMED;
+               elem.TMIN = data[valZi+q].TMIN;
                todisplay.push(elem);
                       // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
