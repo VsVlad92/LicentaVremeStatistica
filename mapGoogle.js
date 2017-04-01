@@ -6,7 +6,8 @@ function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 45.8207836, lng:24.8523799},
             zoom: 7,
-            mapTypeId: 'terrain'
+            mapTypeId: 'terrain',
+            scrollwheel:  false
         });
         var infoWindow = new google.maps.InfoWindow({
             maxWidth: 500
