@@ -10,6 +10,9 @@
 <link href="metronic/global/plugins/morris/morris.css" rel="stylesheet" type="text/css">
 <link href="metronic/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css">
 <link href="metronic/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css">
+<link href="metronic/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css">
+<link href="metronic/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
+<link href="metronic/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
 <!--Global Styles-->
 <link href="metronic/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css">
 <link href="metronic/global/css/plugins.min.css" rel="stylesheet" type="text/css">
@@ -123,7 +126,7 @@
 					<button id="show" onclick="initMap()" style="display: none" class="btn">Action</button>
 				</div>
 				<div class="row portlet light bordered">
-					<!--<div id="values"></div>-->
+					<input class="datepicker" data-provide="datepicker">
 				</div>
 			</div>
 		</div>
@@ -131,6 +134,15 @@
 
 	<!--Core scripts-->
 	<script src="metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
+	<script src="metronic/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="metronic/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+	<script src="metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+	<script src="metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+	<script src="metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+	<script src="metronic/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+	<script src="metronic/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+	<script src="metronic/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+	<script src="metronic/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
 	<script src="./reqObj.js"></script>
 	<script src="./main.js"></script>
 	<script src="./statiimeteo.js"></script>
@@ -139,11 +151,7 @@
     async defer type="text/javascript"></script>
 	<script src="./mapGoogle.js"></script>
 	<!--<script src="./raphael.js"></script>-->
-	<script src="metronic/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="metronic/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-	<script src="metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-	<script src="metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
 	<!--<script src="map.js" type="text/javascript"></script>-->
 </body>
 </html>

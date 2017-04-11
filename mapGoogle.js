@@ -3,12 +3,27 @@ var map;
 var cityCircle;
 
 function initMap() {
+
+        var stylez2 = [
+            {
+              featureType: "all",
+              elementType: "labels",
+              stylers: [
+                { visibility: "off" }
+              ]
+            }
+          ];
+      var MY_MAPTYPE_ID2 = 'no-labels';
+
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 45.8207836, lng:24.8523799},
             zoom: 7,
-            mapTypeId: 'terrain',
-            scrollwheel:  false
+            scrollwheel:  false,
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            styles: stylez2
         });
+
+        
         var infoWindow = new google.maps.InfoWindow({
             maxWidth: 500
         }); 
@@ -54,9 +69,24 @@ function initMap() {
               fillOpacity: 0.35,
               map: map,
               center: statie.center,
-              radius: Math.sqrt(statie.weight) * 100
+              radius: Math.sqrt(statie.weight) * 100,
+              label: todisplay[i].TMED+" C"
             });
-
+             var marker = new google.maps.Marker({
+              position: statie.center,
+              map: map,
+              title: 'Temperatura Medie',
+              label: {
+                text :todisplay[i].TMED+" C",
+                fontWeight: "600",
+                fontSize: "34"
+            },
+              icon: "./img.ico"
+            });
+           // icon: "http://cdn3.howtogeek.com/wp-content/uploads/2010/09/transparent.ico"
+             // icon: "./transparentPNG.png"
+           // marker.setVisible(false);
+            
             google.maps.event.addListener(cityCircle, 'click', function(ev) {
                 console.log(this.id);
                 var infoWindow = new google.maps.InfoWindow({
