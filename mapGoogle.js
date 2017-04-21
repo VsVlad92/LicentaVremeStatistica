@@ -77,15 +77,12 @@ function initMap() {
               map: map,
               title: 'Temperatura Medie',
               label: {
-                text :todisplay[i].TMED+" C",
+                text : todisplay[i].TMED+" C",
                 fontWeight: "600",
                 fontSize: "34"
             },
               icon: "./img.ico"
             });
-           // icon: "http://cdn3.howtogeek.com/wp-content/uploads/2010/09/transparent.ico"
-             // icon: "./transparentPNG.png"
-           // marker.setVisible(false);
             
             google.maps.event.addListener(cityCircle, 'click', function(ev) {
                 console.log(this.id);
