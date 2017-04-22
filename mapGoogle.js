@@ -1,6 +1,8 @@
 
 var map;
 var cityCircle;
+var circles = [];
+var markers = [];
 
 function initMap() {
 
@@ -22,89 +24,7 @@ function initMap() {
             mapTypeId: google.maps.MapTypeId.TERRAIN,
             styles: stylez2
         });
-
-        
-        var infoWindow = new google.maps.InfoWindow({
-            maxWidth: 500
-        }); 
-
-        var heatMapData =[];
-        var i=0;
-        statiiMeteo.forEach(function(statie,index){
-          // todisplay[i]
-          if(todisplay[i] != undefined){ 
-            var z = {
-               Data: todisplay[i].DATCLIM,
-               Alt: todisplay[i].ALT,
-               Tmed: todisplay[i].TMED,
-               Tmin: todisplay[i].TMIN,
-               Name: statie.name,
-               Cod: todisplay[i].CODST,
-               Tmax: todisplay[i].TMAX,
-               center: {lat: statie.lat, lng : statie.lon},
-               weight: 99999
-           }
-          }else {
-            var z = {
-                center: {lat: statie.lat, lng : statie.lon},
-                weight: 99999
-            }
-           }
-           i++;
-           heatMapData.push(z);
-        })
-        console.log(heatMapData);
-        
-        //heatmap.setMap(map);
-        var i=0;
-         if(todisplay[i] != undefined){ 
-          heatMapData.forEach(function(statie,index){
-            // Add the circle for this city to the map.
-            var cityCircle = new google.maps.Circle({
-              id:i,
-              strokeColor: setColor(todisplay[i].TMAX),
-              strokeOpacity: 0.6,
-              strokeWeight: 2,
-              fillColor: setColor(todisplay[i].TMAX),
-              fillOpacity: 0.35,
-              map: map,
-              center: statie.center,
-              radius: Math.sqrt(statie.weight) * 100,
-              label: todisplay[i].TMED+" C"
-            });
-             var marker = new google.maps.Marker({
-              position: statie.center,
-              map: map,
-              title: 'Temperatura Medie',
-              label: {
-                text : todisplay[i].TMED+" C",
-                fontWeight: "600",
-                fontSize: "34"
-            },
-              icon: "./img.ico"
-            });
-            
-            google.maps.event.addListener(cityCircle, 'click', function(ev) {
-                console.log(this.id);
-                var infoWindow = new google.maps.InfoWindow({
-                      content : '<div class=><p><strong>Numele Statiei Meteo</strong>: '+heatMapData[this.id].Name+'</p>'+
-                                '<p><strong>Temperatura Maxima a zilei</strong>: '+heatMapData[this.id].Tmax+' C</p>'+
-                                '<p><strong>Temperatura Minima a zilei</strong>: '+heatMapData[this.id].Tmin+' C</p>'+
-                                '<p><strong>Temperatura Medie a zilei</strong>: '+heatMapData[this.id].Tmed+' C</p>'+
-                                '<p><strong>Altitudinea Statiei Meteo</strong>: '+heatMapData[this.id].Alt+'m</p>' +
-                                '<p><strong>Data</strong>: '+heatMapData[this.id].Data+'</p></div>'
-                                ,
-                      maxWidth: 500
-                }); 
-                infoWindow.setPosition(ev.latLng);
-                infoWindow.open(map);
-            });
-
-            console.log(setColor(todisplay[i].TMAX))
-            i++;
-          })
-         }
-
+     
         var icons = {
           temp1: {
             name: '-5',
@@ -180,6 +100,101 @@ function setColor(nr){
   if( nr >= 35 )
     return "#cc5408"   
 
+}
+
+function Write(){
+  console.log("WRITE")
+        var heatMapData =[];
+        var i=0;
+        statiiMeteo.forEach(function(statie,index){
+          // todisplay[i]
+          if(todisplay[i] != undefined){ 
+            var z = {
+               Data: todisplay[i].DATCLIM,
+               Alt: todisplay[i].ALT,
+               Tmed: todisplay[i].TMED,
+               Tmin: todisplay[i].TMIN,
+               Name: statie.name,
+               Cod: todisplay[i].CODST,
+               Tmax: todisplay[i].TMAX,
+               center: {lat: statie.lat, lng : statie.lon},
+               weight: 99999
+           }
+          }else {
+            var z = {
+                center: {lat: statie.lat, lng : statie.lon},
+                weight: 99999
+            }
+           }
+           i++;
+           heatMapData.push(z);
+        })
+        console.log(heatMapData);
+        
+        //heatmap.setMap(map);
+        var i=0;
+         if(todisplay[i] != undefined){ 
+          heatMapData.forEach(function(statie,index){
+            // Add the circle for this city to the map.
+            var cityCircle = new google.maps.Circle({
+              id:i,
+              strokeColor: setColor(todisplay[i].TMAX),
+              strokeOpacity: 0.6,
+              strokeWeight: 2,
+              fillColor: setColor(todisplay[i].TMAX),
+              fillOpacity: 0.35,
+              map: map,
+              center: statie.center,
+              radius: Math.sqrt(statie.weight) * 100,
+              label: todisplay[i].TMED+" C"
+            });
+
+             circles.push(cityCircle);
+
+             var marker = new google.maps.Marker({
+              position: statie.center,
+              map: map,
+              title: 'Temperatura Medie',
+              label: {
+                text : todisplay[i].TMED+" C",
+                fontWeight: "600",
+                fontSize: "34"
+            },
+              icon: "./img.ico"
+            });
+
+            markers.push(marker);
+            
+            google.maps.event.addListener(cityCircle, 'click', function(ev) {
+                console.log(this.id);
+                var infoWindow = new google.maps.InfoWindow({
+                      content : '<div class=><p><strong>Numele Statiei Meteo</strong>: '+heatMapData[this.id].Name+'</p>'+
+                                '<p><strong>Temperatura Maxima a zilei</strong>: '+heatMapData[this.id].Tmax+' C</p>'+
+                                '<p><strong>Temperatura Minima a zilei</strong>: '+heatMapData[this.id].Tmin+' C</p>'+
+                                '<p><strong>Temperatura Medie a zilei</strong>: '+heatMapData[this.id].Tmed+' C</p>'+
+                                '<p><strong>Altitudinea Statiei Meteo</strong>: '+heatMapData[this.id].Alt+'m</p>' +
+                                '<p><strong>Data</strong>: '+heatMapData[this.id].Data+'</p></div>'
+                                ,
+                      maxWidth: 500
+                }); 
+                infoWindow.setPosition(ev.latLng);
+                infoWindow.open(map);
+            });
+
+            console.log(setColor(todisplay[i].TMAX))
+            i++;
+          })
+   }
+}
+
+function Clear(){
+  console.log("CLEAR")
+  console.log(circles);
+
+  for (var i = 0; i < circles.length; i++) {
+          circles[i].setMap(null);
+          markers[i].setMap(null);
+        }
 }
 
 

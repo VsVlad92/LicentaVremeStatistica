@@ -1155,7 +1155,8 @@ var an;
             default:
               console.log("?");
         }
-        initMap();
+        Clear();
+        Write();
       } 
   });
  } 
