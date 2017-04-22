@@ -42,7 +42,9 @@ get_url = function(URL){
     /// THE FINAL OBJECT 
       console.log(data);
       data = data;
-      // $('#luna')[0].style.display="";
+      $('#lunaRange')[0].style.display="";
+
+
       
     }
   }); 
@@ -622,7 +624,8 @@ var an;
      grid_num: 11,
      onFinish: function (data) {
         console.log(data);
-        $("#lunaRange")[0].style.display = "";
+        $("#lunaRange")[0].style.display = "none";
+        $("#ziRange")[0].style.display = "none";
         get_url(reqObj[data.from]);
         lunaRange();
         an = data.from;
