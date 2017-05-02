@@ -1126,6 +1126,12 @@ var next = 1;
     console.log("PLAY");
     next = rangeluna.result.from;
     Interval = setInterval(function(){
+      if(next>11){
+         next = 0;
+         rangeluna.update({
+          from: next 
+        })
+      }
       if(start>29){
         start=0;
         next = next + 1;
