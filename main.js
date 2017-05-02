@@ -84,19 +84,21 @@ get_url = function(URL){
   });
  var luna;
  var rangeluna;
- function lunaRange(){
-    $("#range_02").ionRangeSlider({
-      grid: true,
-      from: 0,
-      values: [
+ var luni = [
           "January", "February", "March",
           "April", "May", "June",
           "July", "August", "September",
           "October", "November", "December"
-      ],
+      ];
+ function lunaRange(){
+    $("#range_02").ionRangeSlider({
+      grid: true,
+      from: 0,
+      values: luni,
       onFinish: function (data) {
           console.log(data);
           $("#ziRange")[0].style.display = "";
+          $("#portlet4")[0].style.display = "";
           ziRange();
           luna = data.from + 1;
       } 
@@ -620,25 +622,527 @@ get_url = function(URL){
       }
  }
 
+ function Display1(dataa,luna){
+   {
+         luna = luna + 1 ;
+          console.log("alegem zi:", dataa);
+          switch(luna) {
+              case 1:
+                console.log("ianuarie");
+                var q = 0;
+                var valZi = dataa.from ;
+                todisplay = [];
+                  var elem = {}
+                  elem.DATCLIM = data[valZi+q].DATCLIM;
+                  elem.CODST = data[valZi+q].CODST;
+                  elem.TMAX = data[valZi+q].TMAX;
+                  elem.ALT = data[valZi+q].ALT;
+                  elem.TMED = data[valZi+q].TMED;
+                  elem.TMIN = data[valZi+q].TMIN;
+                  todisplay.push(elem);
+                console.log(data[q + valZi].DATCLIM , " ",data[q + valZi].CODST, " ",  data[q+ valZi].TMAX  )
+                  //$("#values").append("<p>"+ data[parseInt($('#zi').val())-1].DATCLIM + " "+ data[parseInt($('#zi').val())-1].CODST + " "+ data[parseInt($('#zi').val())-1].TMAX+" Grade celsius</p>");
+                for(var i=1; i<23 ; i++){
+                  if(bisect(an)){
+                      q = q+366;
+                    }
+                    else{
+                      q = q +365;
+                    }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);  
+                    console.log(data[q +valZi ].DATCLIM , " ",data[q +valZi].CODST, " ",  data[q+ valZi ].TMAX )
+                  //$("#values").append("<p>"+ data[parseInt($('#zi').val()) -1 + q].DATCLIM + " "+ data[parseInt($('#zi').val()) -1 + q].CODST +" "+ data[parseInt($('#zi').val())-1 + q].TMAX+" Grade celsius</p>");
+                }
+                  break;
+              case 2:
+                  var valZi = dataa.from + 31;
+                  var q = 0;
+                  console.log("februarie" );
+                  todisplay = [];
+                  var elem = {}
+                  elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                  todisplay.push(elem);
+                  console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX)
+                  $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                  for(var i=1; i<23 ; i++){
+                    if(bisect(an)){
+                      q = q+366;
+                    }
+                    else{
+                      q = q +365;
+                    }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);  
+
+                    console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                      //$("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                    }
+                    console.log(todisplay);
+                  break;
+              case 3:
+                console.log("martie")
+                var valZi = dataa.from + 31;
+                  var q = 0;
+                  if(bisect(an)){
+                      q = 29;
+                    }
+                    else{
+                      q = 28;
+                    }
+                  todisplay = [];
+                  var elem = {}
+                  elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                  todisplay.push(elem);
+                    console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                  $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect(an)){
+                      q = q+366;
+                    }
+                    else{
+                      q = q +365;
+                    }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);  
+                      // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                      console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                    }
+                  break;
+              case 4:
+                console.log("aprilie")
+                var valZi = dataa.from + 31;
+                var q = 0;
+                  if(bisect(an)){
+                      q = 60;
+                    }
+                      else{
+                      q = 59;
+                    }
+                  todisplay = [];
+                  var elem = {}
+                  elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                  todisplay.push(elem);
+                console.log("aprilie",q , "   " , valZi );
+                  console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                  for(var i=1; i<23 ; i++){
+                    if(bisect(an)){
+                      q = q+366;
+                    }
+                    else{
+                      q = q +365;
+                    }
+                      elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                      // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                      console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                  }
+                  break;
+                case 5:
+                  console.log("mai")
+                  var valZi = dataa.from + 31;
+                  var q = 0;
+                    if(bisect(an)){
+                      q = 90;
+                    }
+                    else{
+                      q = 89;
+                    }
+                  todisplay = [];
+                  var elem = {}
+                  elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                  todisplay.push(elem);
+                  console.log("aprilie",q , "   " , valZi );
+                    console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                  $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                    for(var i=1; i<23 ; i++){
+                    if(bisect(an)){
+                        q = q+366;
+                      }
+                      else{
+                        q = q +365;
+                      }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                        // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                        console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                    }
+                    break;
+                    case 6:
+                      console.log("iunie")
+                      var valZi = dataa.from + 31;
+                      var q = 0;
+                        if(bisect(an)){
+                          q = 121;
+                        }
+                        else{
+                          q = 120;
+                        }
+                      todisplay = [];
+                      var elem = {}
+                      elem.DATCLIM = data[valZi+q].DATCLIM;
+                      elem.CODST = data[valZi+q].CODST;
+                      elem.TMAX = data[valZi+q].TMAX;
+                      elem.ALT = data[valZi+q].ALT;
+                      elem.TMED = data[valZi+q].TMED;
+                      elem.TMIN = data[valZi+q].TMIN;
+                      todisplay.push(elem);
+                      console.log("iunie",q , "   " , valZi );
+                      console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                      $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                        for(var i=1; i<23 ; i++){
+                        if(bisect(an)){
+                            q = q+366;
+                          }
+                          else{
+                            q = q +365;
+                          }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                            // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                            console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                        }
+                    break;
+                    case 7:
+                      console.log("iulie")
+                      var valZi = dataa.from + 31;
+                      var q = 0;
+                        if(bisect(an)){
+                          q = 151;
+                        }
+                        else{
+                          q = 150;
+                        }
+                      todisplay = [];
+                      var elem = {}
+                      elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                      todisplay.push(elem);
+                      console.log("iulie",q , "   " , valZi );
+                      console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                      $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                        for(var i=1; i<23 ; i++){
+                        if(bisect(an)){
+                            q = q+366;
+                          }
+                          else{
+                            q = q +365;
+                          }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                            // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                            console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                        }
+                    break;
+
+                    case 8:
+                      console.log("august")
+                      var valZi = dataa.from + 31;
+                      var q = 0;
+                        if(bisect(an)){
+                          q = 182;
+                        }
+                        else{
+                          q = 181;
+                        }
+                      todisplay = [];
+                      var elem = {}
+                      elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                      todisplay.push(elem);
+                      console.log("august",q , "   " , valZi );
+                        console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                      $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                        for(var i=1; i<23 ; i++){
+                        if(bisect(an)){
+                            q = q+366;
+                          }
+                          else{
+                            q = q +365;
+                          }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                            // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                            console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                        }
+                    break;
+                    
+                    case 9:
+                      console.log("septembrie")
+                      var valZi = dataa.from + 31;
+                      var q = 0;
+                        if(bisect(an)){
+                          q = 213;
+                        }
+                        else{
+                          q = 212;
+                        }
+                        todisplay = [];
+                      var elem = {}
+                      elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                      todisplay.push(elem);
+                      console.log("septembrie",q , "   " , valZi );
+                        console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                      $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                        for(var i=1; i<23 ; i++){
+                        if(bisect(an)){
+                            q = q+366;
+                          }
+                          else{
+                            q = q +365;
+                          }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                            // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                            console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                        }
+                    break;
+                    
+                    case 10:
+                      console.log("octombrie")
+                      var valZi = dataa.from + 31;
+                      var q = 0;
+                      if(bisect(an)){
+                          q = 243;
+                        }
+                      else{
+                          q = 242;
+                        }
+                      todisplay = [];
+                      var elem = {}
+                      elem.DATCLIM = data[valZi+q].DATCLIM;
+                      elem.CODST = data[valZi+q].CODST;
+                      elem.TMAX = data[valZi+q].TMAX;
+                      elem.ALT = data[valZi+q].ALT;
+                      elem.TMED = data[valZi+q].TMED;
+                      elem.TMIN = data[valZi+q].TMIN;
+                      todisplay.push(elem);
+                      console.log("octombrie",q , "   " , valZi );
+                        console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                      $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                        for(var i=1; i<23 ; i++){
+                        if(bisect(an)){
+                            q = q+366;
+                          }
+                          else{
+                            q = q +365;
+                          }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                            // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                            console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                        }
+                    break;
+
+                    case 11:
+                      console.log("noiembrie")
+                      var valZi = dataa.from + 31;
+                      var q = 0;
+                        if(bisect(an)){
+                          q = 274;
+                        }
+                        else{
+                          q = 273;
+                        }
+                      todisplay = [];
+                      var elem = {}
+                      elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                      todisplay.push(elem);
+                      console.log("noimebrie",q , "   " , valZi );
+                        console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                      $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                        for(var i=1; i<23 ; i++){
+                        if(bisect(an)){
+                            q = q+366;
+                          }
+                          else{
+                            q = q +365;
+                          }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                            // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                            console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                        }
+                    break;
+
+                    case 12:
+                      console.log("decembrie")
+                      var valZi = dataa.from + 31;
+                      var q = 0;
+                        if(bisect(an)){
+                          q = 304;
+                        }
+                        else{
+                          q = 303;
+                        }
+                      todisplay = [];
+                      var elem = {}
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                      todisplay.push(elem);
+                      console.log("decembrie",q , "   " , valZi );
+                        console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                      $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
+                        for(var i=1; i<23 ; i++){
+                        if(bisect(an)){
+                            q = q+366;
+                          }
+                          else{
+                            q = q +365;
+                          }
+                    elem = {};
+                    elem.DATCLIM = data[valZi+q].DATCLIM;
+                    elem.CODST = data[valZi+q].CODST;
+                    elem.TMAX = data[valZi+q].TMAX;
+                    elem.ALT = data[valZi+q].ALT;
+                    elem.TMED = data[valZi+q].TMED;
+                    elem.TMIN = data[valZi+q].TMIN;
+                    todisplay.push(elem);
+                            // $("#values").append("<p>"+ data[valZi+q].DATCLIM + " "+ data[valZi+q].CODST + " "+ data[valZi+q].TMAX+" Grade celsius</p>");
+                            console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
+                        }
+                    break;
+              default:
+                console.log("?");
+          }
+          Clear();
+          Write();
+      }
+ }
+
 var Interval;
 var start = 0;
+var next = 1;
  function Play(){
     console.log("PLAY");
+    next = rangeluna.result.from;
     Interval = setInterval(function(){
-      if(start>30){
+      if(start>29){
         start=0;
+        next = next + 1;
+        rangeluna.update({
+          from: next 
+        })
       }else{ 
-        start++;
+        nextzi = rangezi.result.from;
+        start = nextzi + 1 ;
       }
       var x = {
         from:start
       };
-      Display(x);
+      Display1(x, next);
       rangezi.update({
         from:x.from
       });
-      console.log("IIII",start);
-      
     },1000)
     
  }
