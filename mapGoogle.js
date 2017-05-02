@@ -6,15 +6,15 @@ var markers = [];
 
 function initMap() {
 
-        var stylez2 = [
-            {
-              featureType: "all",
-              elementType: "labels",
-              stylers: [
-                { visibility: "off" }
-              ]
-            }
-          ];
+      var stylez2 = [
+          {
+            featureType: "all",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
       var MY_MAPTYPE_ID2 = 'no-labels';
 
         map = new google.maps.Map(document.getElementById('map'), {
