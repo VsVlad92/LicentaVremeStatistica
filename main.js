@@ -40,7 +40,7 @@ get_url = function(URL){
       }());
       
     /// THE FINAL OBJECT 
-      console.log(data);
+    
       data = data;
       $('#lunaRange')[0].style.display="";
 
@@ -1155,6 +1155,7 @@ var next = 1;
  function Stop(){
    clearInterval(Interval);
  }
+
 
 
   
