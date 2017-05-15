@@ -21,7 +21,7 @@
 // 15460-Calarasi - 44.2015769 27.3175526
 // 15470-Rosiorii de Vede - 44.1039154 24.9919223
 // 15480-Constanta - 44.1765783 28.6083948
-
+// 
 var statiiMeteo = [];
 statiiMeteo[15015]={
     name: "Ocna Sugatag",
