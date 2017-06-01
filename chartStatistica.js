@@ -36,7 +36,7 @@ function Chart(data){
         "title": "red line",
         "useLineColorForBulletBorder": true,
         "valueField": "value",
-        "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
+        "balloonText": "<span style='font-size:18px;'>[[name]] : [[value]]</span>"
     }],
     "chartScrollbar": {
         "graph": "g1",

@@ -7,32 +7,105 @@ $(function() {
     var Ocna =[]; var OcnaChart =[];
 
  
-    var Botosani =[];var Iasi =[];var Ceahlau =[];var Cluj =[];var Bacau =[];
-    var Miercurea =[];var Arad = [];var Deva = [];var Sibiu =[];
-    var Varfu =[];
-    var Caransebes =[];
-    var Galati =[];
-    var Tulcea = [];
-    var Ramnicu = [];
-    var Buzau = [];
-    var Sulina = [];
-    var Drobeta = [];
-    var Bucuresti = [];
-    var Craiova = [];
-    var Calarasi = [];
-    var Rosiorii = [];
-    var Constanta = [];
+    var Botosani =[];   var BotosaniChart =[];var Iasi =[];var IasiChart =[];var Ceahlau =[];var CeahlauChart =[];
+    var Cluj =[];var Bacau =[];var ClujChart =[] ; var BacauChart =[];
+    var Miercurea =[]; var MiercureaChart =[];var Arad = [];var AradChart = [];var Deva = [];var DevaChart = [];var Sibiu =[];var SibiuChart =[];
+    var Varfu =[];var VarfuChart =[];
+    var Caransebes =[]; var CaransebesChart =[];
+    var Galati =[];var GalatiChart =[];
+    var Tulcea = [];var TulceaChart = [];
+    var Ramnicu = [];var RamnicuChart = [];
+    var Buzau = []; var BuzauChart = [];
+    var Sulina = []; var SulinaChart = [];
+    var Drobeta = []; var DrobetaChart = [];
+    var Bucuresti = []; var BucurestiChart = [];
+    var Craiova = []; var CraiovaChart = [];
+    var Calarasi = []; var CalarasiChart = [];
+    var Rosiorii = [];var RosioriiChart = [];
+    var Constanta = [];var ConstantaChart = [];
     var Tmed = [{
            }];
 
         $("#selectOption").change(function(){
             console.log($("#selectOption").val());
             Tabel($("#selectOption").val());
+            ChartSelect($("#selectOption").val());
         })
          TmedAn();
         Tabel("Ocna");
         console.log("Ocna Chart",OcnaChart)
         Chart(OcnaChart);
+
+        function ChartSelect(data){
+             switch(data){
+                case "Ocna":
+                    Chart(OcnaChart)
+                 break;
+                 case "Botosani":
+                    Chart(BotosaniChart)
+                 break;
+                 case "Iasi":
+                    Chart(IasiChart)
+                 break;
+                 case "Ceahlau":
+                    Chart(CeahlauChart)
+                 break;
+                 case "Cluj":
+                   Chart(ClujChart)
+                 break;
+                 case "Bacau":
+                   Chart(BacauChart)
+                 break;
+                 case "Miercurea":
+                   Chart(MiercureaChart)
+                 break;
+                 case "Deva":
+                   Chart(DevaChart)
+                 break;
+                 case "Sibiu":
+                    Chart(SibiuChart)
+                 break;
+                 case "Varfu":
+                   Chart(VarfuChart)
+                 break;
+                 case "Caransebes":
+                    Chart(CaransebesChart)
+                 break;
+                 case "Galati":
+                    Chart(GalatiChart)
+                 break;
+                 case "Tulcea":
+                   Chart(TulceaChart)
+                 break;
+                 case "Ramnicu":
+                  Chart(RamnicuChart)
+                 break;
+                 case "Buzau":
+                    Chart(BuzauChart)
+                 break;
+                 case "Sulina":
+                    Chart(SulinaChart)
+                 break;
+                 case "Drobeta":
+                   Chart(DrobetaChart)
+                 break;
+                 case "Bucuresti":
+                    Chart(BucurestiChart)
+                 break;
+                 case "Craiova":
+                   Chart(CraiovaChart)
+                 break;
+                 case "Calarasi":
+                    Chart(CalarasiChart)
+                 break;
+                 case "Rosiorii":
+                    Chart(RosioriiChart)
+                 break;
+                 case "Constanta":
+                   Chart(ConstantaChart)
+                 break;
+            }
+         };
         
         
         function Tabel(dataMedii){
@@ -176,15 +249,18 @@ $(function() {
                          z = i-1961
                          if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
                               OcnaChart[z]={
+                                "name":"Ocna ",
                                 "date":an,
                                 "value":(tMed/365).toFixed(2)
                             }
                                 OcnaChart[z+1]={
+                                "name":"Ocna ",
                                 "date":an,
                                 "value":""
                             }
                          }else{
                             OcnaChart[z]={
+                                "name":"Ocna ",
                                 "date":an,
                                 "value":(tMed/365).toFixed(2)
                             }
@@ -206,6 +282,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             BotosaniChart[z]={
+                                "name":"Botosani ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                BotosaniChart[z+1]={
+                                "name":"Botosani ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            BotosaniChart[z]={
+                                "name":"Botosani ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15090":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -223,6 +320,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              IasiChart[z]={
+                                "name":"Iasi ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                IasiChart[z+1]={
+                                "name":"Iasi ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            IasiChart[z]={
+                                "name":"Iasi ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15108":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -240,6 +358,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              CeahlauChart[z]={
+                                "name":"Ceahlau ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                CeahlauChart[z+1]={
+                                "name":"Ceahlau ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            CeahlauChart[z]={
+                                "name":"Ceahlau ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15120":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -257,6 +396,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              ClujChart[z]={
+                                "name":"Cluj ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                ClujChart[z+1]={
+                                "name":"Cluj ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            ClujChart[z]={
+                                "name":"Cluj ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                      case "15150":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -274,6 +434,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             BacauChart[z]={
+                                "name":"Bacau ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                               BacauChart[z+1]={
+                                "name":"Bacau ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           BacauChart[z]={
+                                "name":"Bacau ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15170":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -291,6 +472,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              MiercureaChart[z]={
+                                "name":"Miercurea ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                MiercureaChart[z+1]={
+                                "name":"Miercurea ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           MiercureaChart[z]={
+                                "name":"Miercurea ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15200":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -308,6 +510,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             AradChart[z]={
+                                "name":"Arad ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                               AradChart[z+1]={
+                                "name":"Arad ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            AradChart[z]={
+                                "name":"Arad ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15230":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -325,6 +548,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             DevaChart[z]={
+                                "name":"Deva ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                               DevaChart[z+1]={
+                                "name":"Deva ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            DevaChart[z]={
+                                "name":"Deva ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15260":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -342,6 +586,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             SibiuChart[z]={
+                                "name":"Sibiu ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                               SibiuChart[z+1]={
+                                "name":"Sibiu ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           SibiuChart[z]={
+                                "name":"Sibiu ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15280":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -359,6 +624,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              VarfuChart[z]={
+                                "name":"Varfu ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                VarfuChart[z+1]={
+                                "name":"Varfu ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            VarfuChart[z]={
+                                "name":"Varfu ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15292":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -376,6 +662,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              CaransebesChart[z]={
+                                "name":"Caransebes ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                               CaransebesChart[z+1]={
+                                "name":"Caransebes ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           CaransebesChart[z]={
+                                "name":"Caransebes ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15310":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -393,6 +700,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             GalatiChart[z]={
+                                "name":"Galati ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                GalatiChart[z+1]={
+                                "name":"Galati ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           GalatiChart[z]={
+                                "name":"Galati ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15335":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -410,6 +738,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              TulceaChart[z]={
+                                "name":"Tulcea ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                TulceaChart[z+1]={
+                                "name":"Tulcea ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            TulceaChart[z]={
+                                "name":"Tulcea ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15346":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -427,6 +776,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             RamnicuChart[z]={
+                                "name":"Ramnicu ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                RamnicuChart[z+1]={
+                                "name":"Ramnicu ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            RamnicuChart[z]={
+                                "name":"Ramnicu ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15350":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -444,6 +814,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              BuzauChart[z]={
+                                "name":"Buzau ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                               BuzauChart[z+1]={
+                                "name":"Buzau ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            BuzauChart[z]={
+                                "name":"Buzau ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break; 
                     case "15360":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -461,6 +852,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             SulinaChart[z]={
+                                "name":"Sulina ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                SulinaChart[z+1]={
+                                "name":"Sulina ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            SulinaChart[z]={
+                                "name":"Sulina ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15410":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -478,6 +890,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             DrobetaChart[z]={
+                                "name":"Drobeta Turnul Severin ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                DrobetaChart[z+1]={
+                                "name":"Drobeta Turnul Severin ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            DrobetaChart[z]={
+                                "name":"Drobeta Turnul Severin ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15420":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -495,6 +928,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             BucurestiChart[z]={
+                                "name":"Bucuresti-Baneasa ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                               BucurestiChart[z+1]={
+                                "name":"Bucuresti-Baneasa ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           BucurestiChart[z]={
+                                "name":"Bucuresti-Baneasa ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15450":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -512,6 +966,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                            CraiovaChart[z]={
+                                "name":"Craiova ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                               CraiovaChart[z+1]={
+                                "name":"Craiova ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           CraiovaChart[z]={
+                                "name":"Craiova ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15460":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -529,6 +1004,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             CalarasiChart[z]={
+                                "name":"Calarasi ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                CalarasiChart[z+1]={
+                                "name":"Calarasi ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            CalarasiChart[z]={
+                                "name":"Calarasi ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;  
                     case "15470":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -546,6 +1042,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              RosioriiChart[z]={
+                                "name":"Rosiorii de Vede ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                RosioriiChart[z+1]={
+                                "name":"Rosiorii de Vede ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           RosioriiChart[z]={
+                                "name":"Rosiorii de Vede ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15480":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -564,6 +1081,27 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                             ConstantaChart[z]={
+                                "name":"Constanta ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                ConstantaChart[z+1]={
+                                "name":"Constanta ",
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                           ConstantaChart[z]={
+                                "name":"Constanta ",
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                        break;
                    }
            }
