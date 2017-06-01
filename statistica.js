@@ -2,7 +2,12 @@ var tMed;
 var tMedMin;
 var tMedMax;
 $(function() {
-    var Ocna =[];var Botosani =[];var Iasi =[];var Ceahlau =[];var Cluj =[];var Bacau =[];
+
+   
+    var Ocna =[]; var OcnaChart =[];
+
+ 
+    var Botosani =[];var Iasi =[];var Ceahlau =[];var Cluj =[];var Bacau =[];
     var Miercurea =[];var Arad = [];var Deva = [];var Sibiu =[];
     var Varfu =[];
     var Caransebes =[];
@@ -24,7 +29,12 @@ $(function() {
             console.log($("#selectOption").val());
             Tabel($("#selectOption").val());
         })
-
+         TmedAn();
+        Tabel("Ocna");
+        console.log("Ocna Chart",OcnaChart)
+        Chart(OcnaChart);
+        
+        
         function Tabel(dataMedii){
             switch(dataMedii){
                 case "Ocna":
@@ -136,7 +146,7 @@ $(function() {
 
         }
        //Run(Ocna);
-            
+        var z =0
         function TmedAn(){
           for(var i=1961;i<=2016;i++) { 
                 tMed = 0;
@@ -161,6 +171,24 @@ $(function() {
                             TemperaturaMedieMaxima: tMedMax,
                             TemperaturaMedieMinima: tMedMin
                         }
+                        
+                         var an = i.toString();
+                         z = i-1961
+                         if(z==22 || z==29 || z==38  || z==53 || z==18 || z==47 ){
+                              OcnaChart[z]={
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                                OcnaChart[z+1]={
+                                "date":an,
+                                "value":""
+                            }
+                         }else{
+                            OcnaChart[z]={
+                                "date":an,
+                                "value":(tMed/365).toFixed(2)
+                            }
+                         }
                         break;
                     case "15020":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
@@ -546,7 +574,13 @@ $(function() {
         function isInt(value) {
          return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
         }
-        TmedAn();
+       
+
+    $(function(){
+        $('#tableslim').slimScroll({
+            height: '250px'
+        });
+     });
 
 });
 

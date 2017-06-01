@@ -1161,7 +1161,7 @@ Page sidebar
         .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li > .sub-menu {
           display: none !important; }
         .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed > li:hover {
-          width: 256px !important;
+          width: 144px !important;
           position: relative !important;
           z-index: 10000;
           display: block !important; }
