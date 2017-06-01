@@ -146,7 +146,7 @@ function Write(){
               map: map,
               center: statie.center,
               radius: Math.sqrt(statie.weight) * 100,
-              label: todisplay[i].TMED+" C"
+              label: todisplay[i].TMED+"°C"
             });
 
              circles.push(cityCircle);
@@ -156,7 +156,7 @@ function Write(){
               map: map,
               title: 'Temperatura Medie',
               label: {
-                text : todisplay[i].TMED+" C",
+                text : todisplay[i].TMED+"°C",
                 fontWeight: "600",
                 fontSize: "34"
             },
@@ -169,9 +169,9 @@ function Write(){
                 console.log(this.id);
                 var infoWindow = new google.maps.InfoWindow({
                       content : '<div class=><p><strong>Numele Statiei Meteo</strong>: '+heatMapData[this.id].Name+'</p>'+
-                                '<p><strong>Temperatura Maxima a zilei</strong>: '+heatMapData[this.id].Tmax+' C</p>'+
-                                '<p><strong>Temperatura Minima a zilei</strong>: '+heatMapData[this.id].Tmin+' C</p>'+
-                                '<p><strong>Temperatura Medie a zilei</strong>: '+heatMapData[this.id].Tmed+' C</p>'+
+                                '<p><strong>Temperatura Maxima a zilei</strong>: '+heatMapData[this.id].Tmax+'°C</p>'+
+                                '<p><strong>Temperatura Minima a zilei</strong>: '+heatMapData[this.id].Tmin+'°C</p>'+
+                                '<p><strong>Temperatura Medie a zilei</strong>: '+heatMapData[this.id].Tmed+'°C</p>'+
                                 '<p><strong>Altitudinea Statiei Meteo</strong>: '+heatMapData[this.id].Alt+'m</p>' +
                                 '<p><strong>Data</strong>: '+heatMapData[this.id].Data+'</p></div>'
                                 ,

@@ -209,9 +209,9 @@ $(function() {
                 $("#tab").append("<tbody id=tabel1></tbody>");
                 for(i=1961; i<dataMedii.length; i++){
                         if(i==1980 || i==1984 || i== 1991 || i==2015 || i==2000 || i==2009){i++}
-                        var temp1 = dataMedii[i].TemperaturaMedie/365;
-                        var temp2 = dataMedii[i].TemperaturaMedieMaxima/365;
-                        var temp3 = dataMedii[i].TemperaturaMedieMinima/365;
+                        var temp1 = (dataMedii[i].TemperaturaMedie/365).toFixed(3) + " ℃";
+                        var temp2 = (dataMedii[i].TemperaturaMedieMaxima/365).toFixed(3) + " ℃";
+                        var temp3 = (dataMedii[i].TemperaturaMedieMinima/365).toFixed(3) + " ℃";
                         $("#tabel1").append("<tr>"+"<td>"+i+"</td>"+"<td>"+temp1+"</td>"+"<td>"+temp2+"</td>"+"<td>"+temp3+"</td>"+"</tr>");
                 }
             }

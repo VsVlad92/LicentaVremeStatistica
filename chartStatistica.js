@@ -1,7 +1,6 @@
 
 
 function Chart(data){
-    console.log("CE PLM ", data)
     var chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
     "theme": "none",
@@ -36,7 +35,7 @@ function Chart(data){
         "title": "red line",
         "useLineColorForBulletBorder": true,
         "valueField": "value",
-        "balloonText": "<span style='font-size:18px;'>[[name]] : [[value]]</span>"
+        "balloonText": "<span style='font-size:18px;'>[[name]] : [[value]]℃</span>"
     }],
     "chartScrollbar": {
         "graph": "g1",
