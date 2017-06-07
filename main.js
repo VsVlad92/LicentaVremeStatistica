@@ -4,53 +4,70 @@ var dataNew = [];
 var datazi = [];
 var quote;
 var str_parse = function(data){
-  data = data.replace(/<[/]*body[^>]*>/g,'');
-  data = data.replace(/<--[\S\s]*?-->/g,'');
-  data = data.replace(/[\r]+/g,'');
-  data = data.replace(/<noscript[^>]*>[\S\s]*?<\/noscript>/g,'');
-  data = data.replace(/<script[^>]*>[\S\s]*?<\/script>/g,'');
-  data = data.replace(/<script.*\/>/,'');
+  // data = data.replace(/<[/]*body[^>]*>/g,'');
+  // data = data.replace(/<--[\S\s]*?-->/g,'');
+  // data = data.replace(/[\r]+/g,'');
+  // data = data.replace(/<noscript[^>]*>[\S\s]*?<\/noscript>/g,'');
+  // data = data.replace(/<script[^>]*>[\S\s]*?<\/script>/g,'');
+  // data = data.replace(/<script.*\/>/,'');
   return data
 }
-get_url = function(URL){
-  $.ajax({
-    url:"//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22"+
-    encodeURIComponent(URL)+"%22",
-    dataType: "jsonp",
-    type: 'get',
-    success: function(r){
-      //data=r.query.results.body;
-      data=r.results[0];
-      data = str_parse(data);
-      
-      data = data.split(/[\n]+/); 
-      var HEADER = data[0].split(",");
-      data.shift();
-      data = (function(){
-        var o=[]; 
-        data.forEach(function(E){
-          o.push( (function(){ 
-            var _o={}; 
-            for( var i=0, s=E.split(",");i<s.length;i++ ) 
-              _o[HEADER[i]]=s[i];
-            return _o;
-          }()) );
-        });
-        return o;
-      }());
-      
-    /// THE FINAL OBJECT 
-    
-      data = data;
-      $('#lunaRange')[0].style.display="";
-
-
-      
+   function year(){
+      for (var i = new Date().getFullYear(); i > 1960; i--)
+      {
+          $('#an').append($('<option />').val(i).html(i));
+      }
     }
-  }); 
+  
+// get_url = function(URL){
+//   $.ajax({
+//     // url:"//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22"+
+//     // encodeURIComponent(URL)+"%22",
+//     url:`https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20csv%20where%20url%3D'http%3A%2F%2Fdata.gov.ro%2Fdataset%2Ff649bad3-aa57-43ba-bf9e-bd8e9edde3f4%2Fresource%2F4419b08f-4b1a-45fc-b88f-822bdacbe02d%2Fdownload%2Fclimrbsn2016.csv'%0A%20%20%20%20%20%20and%20columns%3D'CODST%2CALT%2CLAT%2CLON%2CDATCLIM%2CTMAX%2CTMED%2CTMIN%2CR24'&format=json&diagnostics=true&callback=`,
+//     dataType: "jsonp",
+//     type: 'get',
+//     success: function(r){
+//       //data=r.query.results.body;
+//       data=r.results[0];
+//       data = str_parse(data);
+      
+//       data = data.split(/[\n]+/); 
+//       var HEADER = data[0].split(",");
+//       data.shift();
+//       data = (function(){
+//         var o=[]; 
+//         data.forEach(function(E){
+//           o.push( (function(){ 
+//             var _o={}; 
+//             for( var i=0, s=E.split(",");i<s.length;i++ ) 
+//               _o[HEADER[i]]=s[i];
+//             return _o;
+//           }()) );
+//         });
+//         return o;
+//       }());
+      
+//     /// THE FINAL OBJECT 
+    
+//       data = data;
+//       console.log("dasdasdas",data)
+//       $('#lunaRange')[0].style.display="";
+//     },
+//     error: function(r){
+//       console.log("asdasdasdr",r);
+//     }
+//   }); 
+// }
+
+
+get_url = function(an){
+  data = bigData[an];
+   $('#lunaRange')[0].style.display="";
+  console.log(data);
 }
 
   $(function() {
+      year();
         $('a')   
           .filter(function(i) {   
               return $(this).attr("title") ? $(this).attr("title"): false;
@@ -76,7 +93,7 @@ get_url = function(URL){
           console.log(data);
           $("#lunaRange")[0].style.display = "none";
           $("#ziRange")[0].style.display = "none";
-          get_url(reqObj[data.from]);
+          get_url(data.from);
           lunaRange();
           an = data.from;
       }  
@@ -145,7 +162,7 @@ get_url = function(URL){
                   todisplay.push(elem);
                 console.log(data[q + valZi].DATCLIM , " ",data[q + valZi].CODST, " ",  data[q+ valZi].TMAX  )
                   //$("#values").append("<p>"+ data[parseInt($('#zi').val())-1].DATCLIM + " "+ data[parseInt($('#zi').val())-1].CODST + " "+ data[parseInt($('#zi').val())-1].TMAX+" Grade celsius</p>");
-                for(var i=1; i<23 ; i++){
+                for(var i=1; i<22 ; i++){
                   if(bisect(an)){
                       q = q+366;
                     }
@@ -153,6 +170,7 @@ get_url = function(URL){
                       q = q +365;
                     }
                     elem = {};
+                    console.log(valZi+q);
                     elem.DATCLIM = data[valZi+q].DATCLIM;
                     elem.CODST = data[valZi+q].CODST;
                     elem.TMAX = data[valZi+q].TMAX;
@@ -179,7 +197,7 @@ get_url = function(URL){
                   todisplay.push(elem);
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX)
                   $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                  for(var i=1; i<23 ; i++){
+                  for(var i=1; i<22 ; i++){
                     if(bisect(an)){
                       q = q+366;
                     }
@@ -221,7 +239,7 @@ get_url = function(URL){
                   todisplay.push(elem);
                     console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                   $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                    for(var i=1; i<23 ; i++){
+                    for(var i=1; i<22 ; i++){
                     if(bisect(an)){
                       q = q+366;
                     }
@@ -262,7 +280,7 @@ get_url = function(URL){
                 console.log("aprilie",q , "   " , valZi );
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                 $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                  for(var i=1; i<23 ; i++){
+                  for(var i=1; i<22 ; i++){
                     if(bisect(an)){
                       q = q+366;
                     }
@@ -303,7 +321,7 @@ get_url = function(URL){
                   console.log("aprilie",q , "   " , valZi );
                     console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                   $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                    for(var i=1; i<23 ; i++){
+                    for(var i=1; i<22 ; i++){
                     if(bisect(an)){
                         q = q+366;
                       }
@@ -344,7 +362,7 @@ get_url = function(URL){
                       console.log("iunie",q , "   " , valZi );
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -385,7 +403,7 @@ get_url = function(URL){
                       console.log("iulie",q , "   " , valZi );
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -427,7 +445,7 @@ get_url = function(URL){
                       console.log("august",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -469,7 +487,7 @@ get_url = function(URL){
                       console.log("septembrie",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -511,7 +529,7 @@ get_url = function(URL){
                       console.log("octombrie",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -553,7 +571,7 @@ get_url = function(URL){
                       console.log("noimebrie",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -595,7 +613,7 @@ get_url = function(URL){
                       console.log("decembrie",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -642,7 +660,7 @@ get_url = function(URL){
                   todisplay.push(elem);
                 console.log(data[q + valZi].DATCLIM , " ",data[q + valZi].CODST, " ",  data[q+ valZi].TMAX  )
                   //$("#values").append("<p>"+ data[parseInt($('#zi').val())-1].DATCLIM + " "+ data[parseInt($('#zi').val())-1].CODST + " "+ data[parseInt($('#zi').val())-1].TMAX+" Grade celsius</p>");
-                for(var i=1; i<23 ; i++){
+                for(var i=1; i<22 ; i++){
                   if(bisect(an)){
                       q = q+366;
                     }
@@ -676,7 +694,7 @@ get_url = function(URL){
                   todisplay.push(elem);
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX)
                   $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                  for(var i=1; i<23 ; i++){
+                  for(var i=1; i<22 ; i++){
                     if(bisect(an)){
                       q = q+366;
                     }
@@ -718,7 +736,7 @@ get_url = function(URL){
                   todisplay.push(elem);
                     console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                   $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                    for(var i=1; i<23 ; i++){
+                    for(var i=1; i<22 ; i++){
                     if(bisect(an)){
                       q = q+366;
                     }
@@ -759,7 +777,7 @@ get_url = function(URL){
                 console.log("aprilie",q , "   " , valZi );
                   console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                 $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                  for(var i=1; i<23 ; i++){
+                  for(var i=1; i<22 ; i++){
                     if(bisect(an)){
                       q = q+366;
                     }
@@ -800,7 +818,7 @@ get_url = function(URL){
                   console.log("aprilie",q , "   " , valZi );
                     console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                   $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                    for(var i=1; i<23 ; i++){
+                    for(var i=1; i<22 ; i++){
                     if(bisect(an)){
                         q = q+366;
                       }
@@ -841,7 +859,7 @@ get_url = function(URL){
                       console.log("iunie",q , "   " , valZi );
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -882,7 +900,7 @@ get_url = function(URL){
                       console.log("iulie",q , "   " , valZi );
                       console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -924,7 +942,7 @@ get_url = function(URL){
                       console.log("august",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -966,7 +984,7 @@ get_url = function(URL){
                       console.log("septembrie",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -1008,7 +1026,7 @@ get_url = function(URL){
                       console.log("octombrie",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -1050,7 +1068,7 @@ get_url = function(URL){
                       console.log("noimebrie",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }
@@ -1092,7 +1110,7 @@ get_url = function(URL){
                       console.log("decembrie",q , "   " , valZi );
                         console.log(data[valZi+q].DATCLIM , " ",data[valZi+q].CODST, " ",  data[valZi+q].TMAX )
                       $("#values").append("<p>"+ data[valZi].DATCLIM + " "+ data[valZi].CODST + " " + data[valZi].TMAX+" Grade celsius</p>");
-                        for(var i=1; i<23 ; i++){
+                        for(var i=1; i<22 ; i++){
                         if(bisect(an)){
                             q = q+366;
                           }

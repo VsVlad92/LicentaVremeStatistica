@@ -129,7 +129,7 @@ function Write(){
            i++;
            heatMapData.push(z);
         })
-        console.log(heatMapData);
+        console.log("heat map  : " ,heatMapData);
         
         //heatmap.setMap(map);
         var i=0;

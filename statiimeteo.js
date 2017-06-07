@@ -38,11 +38,11 @@ statiiMeteo[15090]={
     lat: 47.1572832,
     lon: 27.5979553
 }
-statiiMeteo[15108]={
-    name: "Ceahlau Toaca",
-    lat: 46.9776171,
-    lon: 25.9497299
-}
+// statiiMeteo[15108]={
+//     name: "Ceahlau Toaca",
+//     lat: 46.9776171,
+//     lon: 25.9497299
+// }
 statiiMeteo[15120]={
     name: "Cluj-Napoca",
     lat: 46.7697272,

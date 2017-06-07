@@ -31,15 +31,23 @@ $(function() {
             Tabel($("#selectOption").val());
             ChartSelect($("#selectOption").val());
         })
-         TmedAn();
+
+        $("#an").change(function(){
+            console.log($("#an").val())
+            console.log(bigData[$("#an").val()])
+            Chartan(bigData[$("#an").val()]);
+        })
+        TmedAn();
         Tabel("Ocna");
-        console.log("Ocna Chart",OcnaChart)
         Chart(OcnaChart);
+        Chartan(bigData[2016]);
 
         function ChartSelect(data){
              switch(data){
                 case "Ocna":
                     Chart(OcnaChart)
+                    Chartan(OcnaChart);
+                    console.log(OcnaChart)
                  break;
                  case "Botosani":
                     Chart(BotosaniChart)
@@ -227,7 +235,7 @@ $(function() {
                 tMedMax = 0;
            for(var j=0;j<bigData[i].length;j++){
                 switch(bigData[i][j].CODST){
-                    case "15015":
+                    case "Ocna Sugatag":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -266,7 +274,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15020":
+                    case "Botosani":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -304,7 +312,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15090":
+                    case "Iasi":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -380,7 +388,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15120":
+                    case "Cluj-Napoca":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -418,7 +426,7 @@ $(function() {
                             }
                          }
                         break;
-                     case "15150":
+                     case "Bacau":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -456,7 +464,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15170":
+                    case "Miercurea Ciuc":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -494,7 +502,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15200":
+                    case "Arad":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -532,7 +540,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15230":
+                    case "Deva":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -570,7 +578,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15260":
+                    case "Sibiu":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -608,7 +616,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15280":
+                    case "Varfu Omu":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -646,7 +654,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15292":
+                    case "Caransebes":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -684,7 +692,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15310":
+                    case "Galati":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -722,7 +730,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15335":
+                    case "Tulcea":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -760,7 +768,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15346":
+                    case "Ramnicu Valcea":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -798,7 +806,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15350":
+                    case "Buzau":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -836,7 +844,7 @@ $(function() {
                             }
                          }
                         break; 
-                    case "15360":
+                    case "Sulina":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -874,7 +882,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15410":
+                    case "Drobeta Turnu Severin":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -912,7 +920,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15420":
+                    case "Bucuresti-Baneasa":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -950,7 +958,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15450":
+                    case "Craiova":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -988,7 +996,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15460":
+                    case "Calarasi":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -1026,7 +1034,7 @@ $(function() {
                             }
                          }
                         break;  
-                    case "15470":
+                    case "Rosiorii de Vede":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                         }
@@ -1064,7 +1072,7 @@ $(function() {
                             }
                          }
                         break;
-                    case "15480":
+                    case "Constanta":
                         if(isInt(bigData[i][j].TMED) && (bigData[i][j].TMED!=" .0")){
                             tMed = tMed + parseInt(bigData[i][j].TMED);
                            
