@@ -34,8 +34,8 @@ function Chart(data){
         "lineThickness": 2,
         "title": "red line",
         "useLineColorForBulletBorder": true,
-        "valueField": "value",
-        "balloonText": "<span style='font-size:18px;'>[[name]] : [[value]]℃</span>"
+        "valueField": "Tmed",
+        "balloonText": "<span style='font-size:18px;'>[[nume]] : [[Tmed]]℃</span>"
     }],
     "chartScrollbar": {
         "graph": "g1",
@@ -67,7 +67,7 @@ function Chart(data){
       "offset":50,
       "scrollbarHeight":10
     },
-    "categoryField": "date",
+    "categoryField": "data",
     "categoryAxis": {
         "parseDates": false,
         "dashLength": 1,

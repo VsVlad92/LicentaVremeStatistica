@@ -39,78 +39,80 @@ $(function() {
         })
         TmedAn();
         Tabel("Ocna");
-        Chart(OcnaChart);
+        Chart(OcnaAll);
         Chartan(bigData[2016]);
 
         function ChartSelect(data){
              switch(data){
                 case "Ocna":
-                    Chart(OcnaChart)
-                    Chartan(OcnaChart);
+                    Chart(OcnaAll)
                     console.log(OcnaChart)
                  break;
                  case "Botosani":
-                    Chart(BotosaniChart)
+                    Chart(BotosaniAll)
                  break;
                  case "Iasi":
-                    Chart(IasiChart)
+                    Chart(IasiAll)
                  break;
                  case "Ceahlau":
                     Chart(CeahlauChart)
                  break;
                  case "Cluj":
-                   Chart(ClujChart)
+                   Chart(ClujAll)
                  break;
                  case "Bacau":
-                   Chart(BacauChart)
+                   Chart(BacauAll)
                  break;
                  case "Miercurea":
-                   Chart(MiercureaChart)
+                   Chart(MiercureaAll)
                  break;
                  case "Deva":
-                   Chart(DevaChart)
+                   Chart(DevaAll)
                  break;
                  case "Sibiu":
-                    Chart(SibiuChart)
+                    Chart(SibiuAll)
                  break;
                  case "Varfu":
-                   Chart(VarfuChart)
+                   Chart(VarfuAll)
                  break;
                  case "Caransebes":
-                    Chart(CaransebesChart)
+                    Chart(CaransebesAll)
                  break;
                  case "Galati":
-                    Chart(GalatiChart)
+                    Chart(GalatiAll)
                  break;
                  case "Tulcea":
-                   Chart(TulceaChart)
+                   Chart(TulceaAll)
                  break;
                  case "Ramnicu":
-                  Chart(RamnicuChart)
+                  Chart(RamnicuAll)
                  break;
                  case "Buzau":
-                    Chart(BuzauChart)
+                    Chart(BuzauAll)
                  break;
                  case "Sulina":
-                    Chart(SulinaChart)
+                    Chart(SulinaAll)
                  break;
                  case "Drobeta":
-                   Chart(DrobetaChart)
+                   Chart(DrobetaAll)
                  break;
                  case "Bucuresti":
-                    Chart(BucurestiChart)
+                    Chart(BucurestiAll)
                  break;
                  case "Craiova":
-                   Chart(CraiovaChart)
+                   Chart(CraiovaAll)
                  break;
                  case "Calarasi":
-                    Chart(CalarasiChart)
+                    Chart(CalarasiAll)
                  break;
                  case "Rosiorii":
-                    Chart(RosioriiChart)
+                    Chart(RosioriiAll)
                  break;
                  case "Constanta":
-                   Chart(ConstantaChart)
+                   Chart(ConstantaAll)
+                 break;
+                 case "Arad":
+                   Chart(AradAll)
                  break;
             }
          };
