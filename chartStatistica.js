@@ -1,6 +1,7 @@
 
 
 function Chart(data){
+   
     var chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
     "theme": "none",
@@ -20,7 +21,7 @@ function Chart(data){
         "shadowAlpha": 0
     },
     "graphs": [{
-        "id": "g1",
+        "id": "g2",
         "balloon":{
           "drop":true,
           "adjustBorderColor":false,
@@ -40,7 +41,7 @@ function Chart(data){
         "balloonText": "<span style='font-size:18px;'>[[nume]] : [[Tmed]]℃</span>"
     }],
     "chartScrollbar": {
-        "graph": "g1",
+        "graph": "g2",
         "oppositeAxis":false,
         "offset":30,
         "scrollbarHeight": 80,
@@ -93,6 +94,7 @@ function Chart(data){
 }
 
 function Chartan(data){
+     console.log("o data 11" , data);
     var chartan = AmCharts.makeChart("chartdivan", {
     "type": "serial",
     "theme": "none",

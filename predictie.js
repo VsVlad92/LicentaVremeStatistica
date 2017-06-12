@@ -1,8 +1,16 @@
-var tMed;
-var tMedMin;
-var tMedMax;
 $(function () {
-
+    var suma = 0;
+    var sumaani = 0;
+    var sumax2 = 0;
+    var xy = 0;
+    var temp1 = 0;
+    var tMed = 0;
+    var tMedMin = 0; var tMedR = 0;
+    var tMedMaxR = 0;
+    var tMedMinR = 0;
+    var tMedMax = 0;
+    var tMedC = 0;
+    var trend = 0;
 
     var Ocna = []; var OcnaChart = [];
 
@@ -25,211 +33,223 @@ $(function () {
     var Constanta = []; var ConstantaChart = [];
     var Tmed = [{
     }];
-
-    $("#selectOption").change(function () {
-        console.log($("#selectOption").val());
-        Tabel($("#selectOption").val());
-        ChartSelect($("#selectOption").val());
+    $("#selectOptionPrediction").change(function () {
+        suma = 0;
+        xy = 0;
+        temp1 = 0;
+        tMed = 0;
+        tMedMin = 0;
+        tMedMax = 0;
+        TabelPredictie($("#selectOptionPrediction").val());
+        $('#tableslim2').slimScroll({
+            height: '350px'
+        });
+        ChartSelectpred($("#selectOptionPrediction").val())
     })
 
-    $("#an").change(function () {
-        console.log($("#an").val())
-        console.log(bigData[$("#an").val()])
-        Chartan(bigData[$("#an").val()]);
-    })
-    TmedAn();
-    Tabel("Ocna");
-    Chart(OcnaAll);
-    Chartan(bigData[2016]);
-
-    function ChartSelect(data) {
+    function ChartSelectpred(data) {
         switch (data) {
             case "Ocna":
-                Chart(OcnaAll)
+                ChartPred1(OcnaChart)
                 console.log(OcnaChart)
                 break;
             case "Botosani":
-                Chart(BotosaniAll)
+                ChartPred1(BotosaniChart)
                 break;
             case "Iasi":
-                Chart(IasiAll)
+                ChartPred1(IasiChart)
                 break;
             case "Ceahlau":
-                Chart(CeahlauChart)
+                ChartPred1(CeahlauChart)
                 break;
             case "Cluj":
-                Chart(ClujAll)
+                ChartPred1(ClujChart)
                 break;
             case "Bacau":
-                Chart(BacauAll)
+                ChartPred1(BacauChart)
                 break;
             case "Miercurea":
-                Chart(MiercureaAll)
+                ChartPred1(MiercureaChart)
                 break;
             case "Deva":
-                Chart(DevaAll)
+                ChartPred1(DevaChart)
                 break;
             case "Sibiu":
-                Chart(SibiuAll)
+                ChartPred1(SibiuChart)
                 break;
             case "Varfu":
-                Chart(VarfuAll)
+                ChartPred1(VarfuChart)
                 break;
             case "Caransebes":
-                Chart(CaransebesAll)
+                ChartPred1(CaransebesChart)
                 break;
             case "Galati":
-                Chart(GalatiAll)
+                ChartPred1(GalatiChart)
                 break;
             case "Tulcea":
-                Chart(TulceaAll)
+                ChartPred1(TulceaChart)
                 break;
             case "Ramnicu":
-                Chart(RamnicuAll)
+                ChartPred1(RamnicuChart)
                 break;
             case "Buzau":
-                Chart(BuzauAll)
+                ChartPred1(BuzauChart)
                 break;
             case "Sulina":
-                Chart(SulinaAll)
+                ChartPred1(SulinaChart)
                 break;
             case "Drobeta":
-                Chart(DrobetaAll)
+                ChartPred1(DrobetaChart)
                 break;
             case "Bucuresti":
-                Chart(BucurestiAll)
+                ChartPred1(BucurestiChart)
                 break;
             case "Craiova":
-                Chart(CraiovaAll)
+                ChartPred1(CraiovaChart)
                 break;
             case "Calarasi":
-                Chart(CalarasiAll)
+                ChartPred1(CalarasiChart)
                 break;
             case "Rosiorii":
-                Chart(RosioriiAll)
+                ChartPred1(RosioriiChart)
                 break;
             case "Constanta":
-                Chart(ConstantaAll)
+                ChartPred1(ConstantaChart)
                 break;
             case "Arad":
-                Chart(AradAll)
+                ChartPred1(AradChart)
                 break;
         }
     };
 
-
-    function Tabel(dataMedii) {
+    TmedAn();
+    function TabelPredictie(dataMedii) {
         switch (dataMedii) {
             case "Ocna":
                 dataMedii = Ocna
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Botosani":
                 dataMedii = Botosani
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Iasi":
                 dataMedii = Iasi
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Iasi":
                 dataMedii = Iasi
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Ceahlau":
                 dataMedii = Ceahlau
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Cluj":
                 dataMedii = Cluj
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Bacau":
                 dataMedii = Bacau
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Miercurea":
                 dataMedii = Miercurea
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Deva":
                 dataMedii = Deva
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Sibiu":
                 dataMedii = Sibiu
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Varfu":
                 dataMedii = Varfu
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Caransebes":
                 dataMedii = Caransebes
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Galati":
                 dataMedii = Galati
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Tulcea":
                 dataMedii = Tulcea
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Ramnicu":
                 dataMedii = Ramnicu
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Buzau":
                 dataMedii = Buzau
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Sulina":
                 dataMedii = Sulina
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Drobeta":
                 dataMedii = Drobeta
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Bucuresti":
                 dataMedii = Bucuresti
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Craiova":
                 dataMedii = Craiova
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Calarasi":
                 dataMedii = Calarasi
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Rosiorii":
                 dataMedii = Rosiorii
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
             case "Constanta":
                 dataMedii = Constanta
-                Run(dataMedii)
+                RunPredictie(dataMedii)
                 break;
         }
-        function Run(dataMedii) {
+
+        function RunPredictie(dataMedii) {
             console.log(dataMedii);
-            $("#tabel1").remove();
-            $("#tab").append("<tbody id=tabel1></tbody>");
+            $("#tabel2").remove();
+            $("#tab2").append("<tbody id=tabel2></tbody>");
+            var x = -25;
+            xy = 0;
+            temp1 = 0;
+            sumaani = 0
+            sumax2 = 0;
+            suma = 0;
+            dataMedii[1980] = {
+                TemperaturaMedie: 200
+            }
             for (i = 1961; i < dataMedii.length; i++) {
-                if (i == 1980 || i == 1984 || i == 1991 || i == 2015 || i == 2000 || i == 2009) { i++ }
-                var temp1 = (dataMedii[i].TemperaturaMedie / 365).toFixed(3) + " ℃";
-                var temp2 = (dataMedii[i].TemperaturaMedieMaxima / 365).toFixed(3) + " ℃";
-                var temp3 = (dataMedii[i].TemperaturaMedieMinima / 365).toFixed(3) + " ℃";
-                $("#tabel1").append("<tr>" + "<td>" + i + "</td>" + "<td>" + temp1 + "</td>" + "<td>" + temp2 + "</td>" + "<td>" + temp3 + "</td>" + "</tr>");
+                if (i == 1984 || i == 1991 || i == 2015 || i == 2000 || i == 2009) { i++ }
+                temp1 = dataMedii[i].TemperaturaMedie + " ℃";
+                // var temp3 = (dataMedii[i].TemperaturaMedieMinima) + " ℃";
+                xy = x * dataMedii[i].TemperaturaMedie;
+                suma = suma + xy;
+                sumax2 = sumax2 + x * x;
+                sumaani = sumaani + dataMedii[i].TemperaturaMedie;
+                $("#tabel2").append("<tr>" + "<td>" + i + "</td>" + "<td>" + temp1 + "</td>" + "<td>" + x + "</td>" + "<td>" + xy + "</td>" + "</tr>");
+                x++;
             }
         }
-
+        trend = suma / sumax2;
+        $("#trend").val(trend)
+        console.log("Suma aia xy ", suma, "suma ani : ", sumaani, "suma x2 ", sumax2, "trend : ", trend);
 
     }
-    //Run(Ocna);
-    var z = 0
+
     function TmedAn() {
         tMed = 0;
         tMedMin = 0;
@@ -286,7 +306,7 @@ $(function () {
                             OcnaChart[z] = {
                                 "name": "Ocna ",
                                 "date": an,
-                                "value": (tMedO / 365).toFixed(2)
+                                "value": tMedO.toString()
                             }
                             OcnaChart[z + 1] = {
                                 "name": "Ocna ",
@@ -297,7 +317,7 @@ $(function () {
                             OcnaChart[z] = {
                                 "name": "Ocna ",
                                 "date": an,
-                                "value": (tMedO / 365).toFixed(2)
+                                "value": tMedO.toString()
                             }
                         }
                         break;
@@ -324,7 +344,7 @@ $(function () {
                             BotosaniChart[z] = {
                                 "name": "Botosani ",
                                 "date": an,
-                                "value": (tMedB / 365).toFixed(2)
+                                "value": tMedB.toString()
                             }
                             BotosaniChart[z + 1] = {
                                 "name": "Botosani ",
@@ -335,7 +355,7 @@ $(function () {
                             BotosaniChart[z] = {
                                 "name": "Botosani ",
                                 "date": an,
-                                "value": (tMedB / 365).toFixed(2)
+                                "value": tMedB.toString()
                             }
                         }
                         break;
@@ -362,7 +382,7 @@ $(function () {
                             IasiChart[z] = {
                                 "name": "Iasi ",
                                 "date": an,
-                                "value": (tMedi / 365).toFixed(2)
+                                "value": tMedi.toString()
                             }
                             IasiChart[z + 1] = {
                                 "name": "Iasi ",
@@ -373,11 +393,11 @@ $(function () {
                             IasiChart[z] = {
                                 "name": "Iasi ",
                                 "date": an,
-                                "value": (tMedi / 365).toFixed(2)
+                                "value": tMedi.toString()
                             }
                         }
                         break;
-                    case "Ceahlau ":
+                    case "Ceahlau Toaca":
                         if (isInt(bigData[i][j].TMED) && (bigData[i][j].TMED != " .0")) {
                             tMedc = tMedc + parseInt(bigData[i][j].TMED);
                         }
@@ -400,7 +420,7 @@ $(function () {
                             CeahlauChart[z] = {
                                 "name": "Ceahlau ",
                                 "date": an,
-                                "value": (tMedc / 365).toFixed(2)
+                                "value": tMedc.toString()
                             }
                             CeahlauChart[z + 1] = {
                                 "name": "Ceahlau ",
@@ -411,7 +431,7 @@ $(function () {
                             CeahlauChart[z] = {
                                 "name": "Ceahlau ",
                                 "date": an,
-                                "value": (tMedc / 365).toFixed(2)
+                                "value": tMedc.toString()
                             }
                         }
                         break;
@@ -438,7 +458,7 @@ $(function () {
                             ClujChart[z] = {
                                 "name": "Cluj ",
                                 "date": an,
-                                "value": (tMedcl / 365).toFixed(2)
+                                "value": tMedcl.toString()
                             }
                             ClujChart[z + 1] = {
                                 "name": "Cluj ",
@@ -449,7 +469,7 @@ $(function () {
                             ClujChart[z] = {
                                 "name": "Cluj ",
                                 "date": an,
-                                "value": (tMedcl / 365).toFixed(2)
+                                "value": tMedcl.toString()
                             }
                         }
                         break;
@@ -476,7 +496,7 @@ $(function () {
                             BacauChart[z] = {
                                 "name": "Bacau ",
                                 "date": an,
-                                "value": (tMedba / 365).toFixed(2)
+                                "value": tMedba.toString()
                             }
                             BacauChart[z + 1] = {
                                 "name": "Bacau ",
@@ -487,7 +507,7 @@ $(function () {
                             BacauChart[z] = {
                                 "name": "Bacau ",
                                 "date": an,
-                                "value": (tMedba / 365).toFixed(2)
+                                "value": tMedba.toString()
                             }
                         }
                         break;
@@ -514,7 +534,7 @@ $(function () {
                             MiercureaChart[z] = {
                                 "name": "Miercurea ",
                                 "date": an,
-                                "value": (tMedmi / 365).toFixed(2)
+                                "value": tMedmi.toString()
                             }
                             MiercureaChart[z + 1] = {
                                 "name": "Miercurea ",
@@ -525,7 +545,7 @@ $(function () {
                             MiercureaChart[z] = {
                                 "name": "Miercurea ",
                                 "date": an,
-                                "value": (tMedmi / 365).toFixed(2)
+                                "value": tMedmi.toString()
                             }
                         }
                         break;
@@ -552,7 +572,7 @@ $(function () {
                             AradChart[z] = {
                                 "name": "Arad ",
                                 "date": an,
-                                "value": (tMedA / 365).toFixed(2)
+                                "value": tMedA.toString()
                             }
                             AradChart[z + 1] = {
                                 "name": "Arad ",
@@ -563,7 +583,7 @@ $(function () {
                             AradChart[z] = {
                                 "name": "Arad ",
                                 "date": an,
-                                "value": (tMedA / 365).toFixed(2)
+                                "value": tMedA.toString()
                             }
                         }
                         break;
@@ -590,7 +610,7 @@ $(function () {
                             DevaChart[z] = {
                                 "name": "Deva ",
                                 "date": an,
-                                "value": (tMedD / 365).toFixed(2)
+                                "value": tMedD.toString()
                             }
                             DevaChart[z + 1] = {
                                 "name": "Deva ",
@@ -601,7 +621,7 @@ $(function () {
                             DevaChart[z] = {
                                 "name": "Deva ",
                                 "date": an,
-                                "value": (tMedD / 365).toFixed(2)
+                                "value": tMedD.toString()
                             }
                         }
                         break;
@@ -628,7 +648,7 @@ $(function () {
                             SibiuChart[z] = {
                                 "name": "Sibiu ",
                                 "date": an,
-                                "value": (tMedS / 365).toFixed(2)
+                                "value": tMedS.toString()
                             }
                             SibiuChart[z + 1] = {
                                 "name": "Sibiu ",
@@ -639,7 +659,7 @@ $(function () {
                             SibiuChart[z] = {
                                 "name": "Sibiu ",
                                 "date": an,
-                                "value": (tMedS / 365).toFixed(2)
+                                "value": tMedS.toString()
                             }
                         }
                         break;
@@ -666,7 +686,7 @@ $(function () {
                             VarfuChart[z] = {
                                 "name": "Varfu ",
                                 "date": an,
-                                "value": (tMedV / 365).toFixed(2)
+                                "value": tMedV.toString()
                             }
                             VarfuChart[z + 1] = {
                                 "name": "Varfu ",
@@ -677,7 +697,7 @@ $(function () {
                             VarfuChart[z] = {
                                 "name": "Varfu ",
                                 "date": an,
-                                "value": (tMedV / 365).toFixed(2)
+                                "value": tMedV.toString()
                             }
                         }
                         break;
@@ -704,7 +724,7 @@ $(function () {
                             CaransebesChart[z] = {
                                 "name": "Caransebes ",
                                 "date": an,
-                                "value": (tMedC / 365).toFixed(2)
+                                "value": tMedC.toString()
                             }
                             CaransebesChart[z + 1] = {
                                 "name": "Caransebes ",
@@ -715,7 +735,7 @@ $(function () {
                             CaransebesChart[z] = {
                                 "name": "Caransebes ",
                                 "date": an,
-                                "value": (tMedC / 365).toFixed(2)
+                                "value": tMedC.toString()
                             }
                         }
                         break;
@@ -742,7 +762,7 @@ $(function () {
                             GalatiChart[z] = {
                                 "name": "Galati ",
                                 "date": an,
-                                "value": (tMedG / 365).toFixed(2)
+                                "value": tMedG.toString()
                             }
                             GalatiChart[z + 1] = {
                                 "name": "Galati ",
@@ -753,7 +773,7 @@ $(function () {
                             GalatiChart[z] = {
                                 "name": "Galati ",
                                 "date": an,
-                                "value": (tMedG / 365).toFixed(2)
+                                "value": tMedG.toString()
                             }
                         }
                         break;
@@ -780,7 +800,7 @@ $(function () {
                             TulceaChart[z] = {
                                 "name": "Tulcea ",
                                 "date": an,
-                                "value": (tMedT / 365).toFixed(2)
+                                "value": tMedT.toString()
                             }
                             TulceaChart[z + 1] = {
                                 "name": "Tulcea ",
@@ -791,7 +811,7 @@ $(function () {
                             TulceaChart[z] = {
                                 "name": "Tulcea ",
                                 "date": an,
-                                "value": (tMedT / 365).toFixed(2)
+                                "value": tMedT.toString()
                             }
                         }
                         break;
@@ -818,7 +838,7 @@ $(function () {
                             RamnicuChart[z] = {
                                 "name": "Ramnicu ",
                                 "date": an,
-                                "value": (tMedR / 365).toFixed(2)
+                                "value": tMedR.toString()
                             }
                             RamnicuChart[z + 1] = {
                                 "name": "Ramnicu ",
@@ -829,7 +849,7 @@ $(function () {
                             RamnicuChart[z] = {
                                 "name": "Ramnicu ",
                                 "date": an,
-                                "value": (tMedR / 365).toFixed(2)
+                                "value": tMedR.toString()
                             }
                         }
                         break;
@@ -856,7 +876,7 @@ $(function () {
                             BuzauChart[z] = {
                                 "name": "Buzau ",
                                 "date": an,
-                                "value": (tMedbu / 365).toFixed(2)
+                                "value": tMedbu.toString()
                             }
                             BuzauChart[z + 1] = {
                                 "name": "Buzau ",
@@ -867,7 +887,7 @@ $(function () {
                             BuzauChart[z] = {
                                 "name": "Buzau ",
                                 "date": an,
-                                "value": (tMedbu / 365).toFixed(2)
+                                "value": tMedbu.toString()
                             }
                         }
                         break;
@@ -894,7 +914,7 @@ $(function () {
                             SulinaChart[z] = {
                                 "name": "Sulina ",
                                 "date": an,
-                                "value": (tMedsu / 365).toFixed(2)
+                                "value": tMedsu.toString()
                             }
                             SulinaChart[z + 1] = {
                                 "name": "Sulina ",
@@ -905,7 +925,7 @@ $(function () {
                             SulinaChart[z] = {
                                 "name": "Sulina ",
                                 "date": an,
-                                "value": (tMedsu / 365).toFixed(2)
+                                "value": tMedsu.toString()
                             }
                         }
                         break;
@@ -932,7 +952,7 @@ $(function () {
                             DrobetaChart[z] = {
                                 "name": "Drobeta Turnul Severin ",
                                 "date": an,
-                                "value": (tMeddr / 365).toFixed(2)
+                                "value": tMeddr.toString()
                             }
                             DrobetaChart[z + 1] = {
                                 "name": "Drobeta Turnul Severin ",
@@ -943,7 +963,7 @@ $(function () {
                             DrobetaChart[z] = {
                                 "name": "Drobeta Turnul Severin ",
                                 "date": an,
-                                "value": (tMeddr / 365).toFixed(2)
+                                "value": tMeddr.toString()
                             }
                         }
                         break;
@@ -970,7 +990,7 @@ $(function () {
                             BucurestiChart[z] = {
                                 "name": "Bucuresti-Baneasa ",
                                 "date": an,
-                                "value": (tMedbb / 365).toFixed(2)
+                                "value": tMedbb.toString()
                             }
                             BucurestiChart[z + 1] = {
                                 "name": "Bucuresti-Baneasa ",
@@ -981,7 +1001,7 @@ $(function () {
                             BucurestiChart[z] = {
                                 "name": "Bucuresti-Baneasa ",
                                 "date": an,
-                                "value": (tMedbb / 365).toFixed(2)
+                                "value": tMedbb.toString()
                             }
                         }
                         break;
@@ -1008,7 +1028,7 @@ $(function () {
                             CraiovaChart[z] = {
                                 "name": "Craiova ",
                                 "date": an,
-                                "value": (tMedcr / 365).toFixed(2)
+                                "value": tMedcr.toString()
                             }
                             CraiovaChart[z + 1] = {
                                 "name": "Craiova ",
@@ -1019,7 +1039,7 @@ $(function () {
                             CraiovaChart[z] = {
                                 "name": "Craiova ",
                                 "date": an,
-                                "value": (tMedcr / 365).toFixed(2)
+                                "value": tMedcr.toString()
                             }
                         }
                         break;
@@ -1046,7 +1066,7 @@ $(function () {
                             CalarasiChart[z] = {
                                 "name": "Calarasi ",
                                 "date": an,
-                                "value": (tMedca / 365).toFixed(2)
+                                "value": tMedca.toString()
                             }
                             CalarasiChart[z + 1] = {
                                 "name": "Calarasi ",
@@ -1057,7 +1077,7 @@ $(function () {
                             CalarasiChart[z] = {
                                 "name": "Calarasi ",
                                 "date": an,
-                                "value": (tMedca / 365).toFixed(2)
+                                "value": tMedca.toString()
                             }
                         }
                         break;
@@ -1085,7 +1105,7 @@ $(function () {
                             RosioriiChart[z] = {
                                 "name": "Rosiorii de Vede ",
                                 "date": an,
-                                "value": (tMed / 365).toFixed(2)
+                                "value": tMedR.toString()
                             }
                             RosioriiChart[z + 1] = {
                                 "name": "Rosiorii de Vede ",
@@ -1096,7 +1116,7 @@ $(function () {
                             RosioriiChart[z] = {
                                 "name": "Rosiorii de Vede ",
                                 "date": an,
-                                "value": (tMed / 365).toFixed(2)
+                                "value": tMedR.toString()
                             }
                         }
                         break;
@@ -1123,7 +1143,7 @@ $(function () {
                             ConstantaChart[z] = {
                                 "name": "Constanta ",
                                 "date": an,
-                                "value": (tMedC / 365).toFixed(2)
+                                "value": tMedC.toString()
                             }
                             ConstantaChart[z + 1] = {
                                 "name": "Constanta ",
@@ -1134,7 +1154,7 @@ $(function () {
                             ConstantaChart[z] = {
                                 "name": "Constanta ",
                                 "date": an,
-                                "value": (tMedC / 365).toFixed(2)
+                                "value": tMedC.toString()
                             }
                         }
                         break;
@@ -1149,11 +1169,6 @@ $(function () {
     }
 
 
-    $(function () {
-        $('#tableslim').slimScroll({
-            height: '250px'
-        });
-    });
 
-});
 
+})
