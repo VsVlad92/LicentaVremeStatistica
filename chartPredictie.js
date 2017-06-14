@@ -95,7 +95,7 @@ function ChartPred1(data) {
 
         chartpred1.startEffect = effect;
         chartpred1.startDuration = duration;
-        chartpred1.sequencedAnimation = document.getElementById("sequenced").checked;
+        //chartpred1.sequencedAnimation = document.getElementById("sequenced").checked;
         chartpred1.animateAgain();
     }
 

@@ -47,77 +47,104 @@ $(function () {
         ChartSelectpred($("#selectOptionPrediction").val())
     })
 
+    ChartPred1(OcnaChart);
+
+    //TabelPredictie("Ocna");
+
     function ChartSelectpred(data) {
         switch (data) {
             case "Ocna":
                 ChartPred1(OcnaChart)
                 console.log(OcnaChart)
+                MetodaModificariiProcentuale(OcnaChart);
                 break;
             case "Botosani":
                 ChartPred1(BotosaniChart)
+                MetodaModificariiProcentuale(BotosaniChart);
                 break;
             case "Iasi":
                 ChartPred1(IasiChart)
+                MetodaModificariiProcentuale(IasiChart);
                 break;
             case "Ceahlau":
                 ChartPred1(CeahlauChart)
+                MetodaModificariiProcentuale(CeahlauChart);
                 break;
             case "Cluj":
                 ChartPred1(ClujChart)
+                MetodaModificariiProcentuale(ClujChart);
                 break;
             case "Bacau":
                 ChartPred1(BacauChart)
+                MetodaModificariiProcentuale(BacauChart);
                 break;
             case "Miercurea":
                 ChartPred1(MiercureaChart)
+                MetodaModificariiProcentuale(MiercureaChart);
                 break;
             case "Deva":
                 ChartPred1(DevaChart)
+                MetodaModificariiProcentuale(DevaChart);
                 break;
             case "Sibiu":
                 ChartPred1(SibiuChart)
+                MetodaModificariiProcentuale(SibiuChart);
                 break;
             case "Varfu":
                 ChartPred1(VarfuChart)
+                MetodaModificariiProcentuale(VarfuChart);
                 break;
             case "Caransebes":
                 ChartPred1(CaransebesChart)
+                MetodaModificariiProcentuale(CaransebesChart);
                 break;
             case "Galati":
                 ChartPred1(GalatiChart)
+                MetodaModificariiProcentuale(GalatiChart);
                 break;
             case "Tulcea":
                 ChartPred1(TulceaChart)
+                MetodaModificariiProcentuale(TulceaChart);
                 break;
             case "Ramnicu":
                 ChartPred1(RamnicuChart)
+                MetodaModificariiProcentuale(RamnicuChart);
                 break;
             case "Buzau":
                 ChartPred1(BuzauChart)
+                MetodaModificariiProcentuale(BuzauChart);
                 break;
             case "Sulina":
                 ChartPred1(SulinaChart)
+                MetodaModificariiProcentuale(SulinaChart);
                 break;
             case "Drobeta":
                 ChartPred1(DrobetaChart)
+                MetodaModificariiProcentuale(DrobetaChart);
                 break;
             case "Bucuresti":
                 ChartPred1(BucurestiChart)
+                MetodaModificariiProcentuale(BucurestiChart);
                 break;
             case "Craiova":
                 ChartPred1(CraiovaChart)
+                MetodaModificariiProcentuale(CraiovaChart);
                 break;
             case "Calarasi":
                 ChartPred1(CalarasiChart)
+                MetodaModificariiProcentuale(CalarasiChart);
                 break;
             case "Rosiorii":
                 ChartPred1(RosioriiChart)
+                MetodaModificariiProcentuale(RosioriiChart);
                 break;
             case "Constanta":
                 ChartPred1(ConstantaChart)
+                MetodaModificariiProcentuale(ConstantaChart);
                 break;
             case "Arad":
                 ChartPred1(AradChart)
+                MetodaModificariiProcentuale(AradChart);
                 break;
         }
     };
@@ -1162,11 +1189,27 @@ $(function () {
             }
         }
     }
-    //console.log("temperatura Ocna", Ocna);
-    //console.log("temperatura", Varfu);
+
     function isInt(value) {
         return !isNaN(value) && (function (x) { return (x | 0) === x; })(parseFloat(value))
     }
+    // $(function  () {
+    function MetodaModificariiProcentuale(data) {
+        var Yt = parseInt(data[55].value);
+        var Y0 = parseInt(data[0].value);
+        var MMP = (Yt - Y0)/54;
+        var Y = (Y0 + 55 * MMP);
+        console.log("Metoda modificarii procentuale ", Y)
+        $("#predictieMMP").val(Y.toFixed(0))
+        return Y;
+    }
+
+    // MetodaModificariiProcentuale(OcnaChart);
+    //})
+
+
+    MetodaModificariiProcentuale(OcnaChart);
+
 
 
 
