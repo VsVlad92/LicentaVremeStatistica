@@ -57,94 +57,117 @@ $(function () {
                 ChartPred1(OcnaChart)
                 console.log(OcnaChart)
                 MetodaModificariiProcentuale(OcnaChart);
+                MetodaNivelariiexponentiale(OcnaChart);
                 break;
             case "Botosani":
                 ChartPred1(BotosaniChart)
                 MetodaModificariiProcentuale(BotosaniChart);
+                MetodaNivelariiexponentiale(BotosaniChart);
                 break;
             case "Iasi":
                 ChartPred1(IasiChart)
                 MetodaModificariiProcentuale(IasiChart);
+                MetodaNivelariiexponentiale(IasiChart);
                 break;
             case "Ceahlau":
                 ChartPred1(CeahlauChart)
                 MetodaModificariiProcentuale(CeahlauChart);
+                MetodaNivelariiexponentiale(CeahlauChart);
                 break;
             case "Cluj":
                 ChartPred1(ClujChart)
                 MetodaModificariiProcentuale(ClujChart);
+                MetodaNivelariiexponentiale(ClujChart);
                 break;
             case "Bacau":
                 ChartPred1(BacauChart)
                 MetodaModificariiProcentuale(BacauChart);
+                MetodaNivelariiexponentiale(BacauChart);
                 break;
             case "Miercurea":
                 ChartPred1(MiercureaChart)
                 MetodaModificariiProcentuale(MiercureaChart);
+                MetodaNivelariiexponentiale(MiercureaChart);
                 break;
             case "Deva":
                 ChartPred1(DevaChart)
                 MetodaModificariiProcentuale(DevaChart);
+                MetodaNivelariiexponentiale(DevaChart);
                 break;
             case "Sibiu":
                 ChartPred1(SibiuChart)
                 MetodaModificariiProcentuale(SibiuChart);
+                MetodaNivelariiexponentiale(SibiuChart);
                 break;
             case "Varfu":
                 ChartPred1(VarfuChart)
                 MetodaModificariiProcentuale(VarfuChart);
+                MetodaNivelariiexponentiale(VarfuChart);
                 break;
             case "Caransebes":
                 ChartPred1(CaransebesChart)
                 MetodaModificariiProcentuale(CaransebesChart);
+                MetodaNivelariiexponentiale(CaransebesChart);
                 break;
             case "Galati":
                 ChartPred1(GalatiChart)
                 MetodaModificariiProcentuale(GalatiChart);
+                MetodaNivelariiexponentiale(GalatiChart);
                 break;
             case "Tulcea":
                 ChartPred1(TulceaChart)
                 MetodaModificariiProcentuale(TulceaChart);
+                MetodaNivelariiexponentiale(TulceaChart);
                 break;
             case "Ramnicu":
                 ChartPred1(RamnicuChart)
                 MetodaModificariiProcentuale(RamnicuChart);
+                MetodaNivelariiexponentiale(RamnicuChart);
                 break;
             case "Buzau":
                 ChartPred1(BuzauChart)
                 MetodaModificariiProcentuale(BuzauChart);
+                MetodaNivelariiexponentiale(BuzauChart);
                 break;
             case "Sulina":
                 ChartPred1(SulinaChart)
                 MetodaModificariiProcentuale(SulinaChart);
+                MetodaNivelariiexponentiale(SulinaChart);
                 break;
             case "Drobeta":
                 ChartPred1(DrobetaChart)
                 MetodaModificariiProcentuale(DrobetaChart);
+                MetodaNivelariiexponentiale(DrobetaChart);
                 break;
             case "Bucuresti":
                 ChartPred1(BucurestiChart)
                 MetodaModificariiProcentuale(BucurestiChart);
+                MetodaNivelariiexponentiale(BucurestiChart);
                 break;
             case "Craiova":
                 ChartPred1(CraiovaChart)
                 MetodaModificariiProcentuale(CraiovaChart);
+                MetodaNivelariiexponentiale(CraiovaChart);
                 break;
             case "Calarasi":
                 ChartPred1(CalarasiChart)
                 MetodaModificariiProcentuale(CalarasiChart);
+                MetodaNivelariiexponentiale(CalarasiChart);
                 break;
             case "Rosiorii":
                 ChartPred1(RosioriiChart)
                 MetodaModificariiProcentuale(RosioriiChart);
+                MetodaNivelariiexponentiale(RosioriiChart);
                 break;
             case "Constanta":
                 ChartPred1(ConstantaChart)
                 MetodaModificariiProcentuale(ConstantaChart);
+                MetodaNivelariiexponentiale(ConstantaChart);
                 break;
             case "Arad":
                 ChartPred1(AradChart)
                 MetodaModificariiProcentuale(AradChart);
+                MetodaNivelariiexponentiale(AradChart);
                 break;
         }
     };
@@ -1194,14 +1217,32 @@ $(function () {
         return !isNaN(value) && (function (x) { return (x | 0) === x; })(parseFloat(value))
     }
     // $(function  () {
+    function MetodaModificariiProcentualeMobile(data) {
+        var Yt = parseInt(data[55].value);
+        var Y0 = parseInt(data[0].value);
+        var MMP = (Yt - Y0)/55;
+        var Y = (1 + MMP)*Yt;
+        console.log("Metoda modificarii procentuale mobile", Y)
+        //$("#predictieMMP").val(Y.toFixed(0))
+        return Y;
+    }
     function MetodaModificariiProcentuale(data) {
         var Yt = parseInt(data[55].value);
         var Y0 = parseInt(data[0].value);
         var MMP = (Yt - Y0)/54;
         var Y = (Y0 + 55 * MMP);
-        console.log("Metoda modificarii procentuale ", Y)
+        //console.log("Metoda modificarii procentuale ", Y)
         $("#predictieMMP").val(Y.toFixed(0))
         return Y;
+    }
+
+    function MetodaNivelariiexponentiale(data){
+        var coef = 0.5;
+        var Yt = parseInt(data[55].value);
+        var Ytt = parseInt(data[53].value);
+        var Y = 0.5 * Yt +(1-0.5)*Ytt;
+        console.log("MetodaNivelariiexponentiale ", Y)
+        $("#predictieMME").val(Y.toFixed(0))
     }
 
     // MetodaModificariiProcentuale(OcnaChart);
@@ -1209,6 +1250,8 @@ $(function () {
 
 
     MetodaModificariiProcentuale(OcnaChart);
+    MetodaNivelariiexponentiale(OcnaChart);
+    //MetodaModificariiProcentualeMobile(OcnaChart);
 
 
 
