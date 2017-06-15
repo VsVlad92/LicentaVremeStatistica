@@ -1220,8 +1220,8 @@ $(function () {
     function MetodaModificariiProcentualeMobile(data) {
         var Yt = parseInt(data[55].value);
         var Y0 = parseInt(data[0].value);
-        var MMP = (Yt - Y0)/55;
-        var Y = (1 + MMP)*Yt;
+        var MMP = (Yt - Y0) / 55;
+        var Y = (1 + MMP) * Yt;
         console.log("Metoda modificarii procentuale mobile", Y)
         //$("#predictieMMP").val(Y.toFixed(0))
         return Y;
@@ -1229,20 +1229,70 @@ $(function () {
     function MetodaModificariiProcentuale(data) {
         var Yt = parseInt(data[55].value);
         var Y0 = parseInt(data[0].value);
-        var MMP = (Yt - Y0)/54;
+        var MMP = (Yt - Y0) / 54;
         var Y = (Y0 + 55 * MMP);
         //console.log("Metoda modificarii procentuale ", Y)
         $("#predictieMMP").val(Y.toFixed(0))
         return Y;
     }
 
-    function MetodaNivelariiexponentiale(data){
+    function MetodaNivelariiexponentiale(data) {
         var coef = 0.5;
         var Yt = parseInt(data[55].value);
         var Ytt = parseInt(data[53].value);
-        var Y = 0.5 * Yt +(1-0.5)*Ytt;
+        var Y = 0.5 * Yt + (1 - 0.5) * Ytt;
         console.log("MetodaNivelariiexponentiale ", Y)
         $("#predictieMME").val(Y.toFixed(0))
+    }
+
+    var brown = [{
+
+    }];
+    function MetodaBrown(data) {
+        console.log("metoda brown", data);
+
+
+
+        brown[0].real = parseInt(data[0].value);
+        brown[0].alfa = 0.7;
+        brown[0].S1 = 0.7 * parseInt(data[0].value) + (1 - 0.7) * brown[0].real;
+        brown[0].S2 = 0.7 * brown[0].S1 + (1 - 0.7) * brown[0].real;
+        brown[0].forecast = 2 * brown[0].S1 - brown[0].S2;
+
+        for (var i = 1; i < 54; i++) {
+            if (i == 18 ||i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) {
+                brown[i] = {
+                    real : 355,
+                    alfa : 0.7,
+                    S1 :  358,
+                }
+                brown[i] = {
+                     S2 :  343
+                }
+                brown[i] = {
+                      forecast :321
+                }
+            } else {
+                var xS1 = brown[i-1].S1;
+                var xS11 =  0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1;
+                var xS2 = brown[i-1].S2;
+                var xS22 = 0.7 * xS11 + (1 - 0.7) * xS2;
+                brown[i] = {
+                    real : parseInt(data[i].value),
+                    alfa : 0.7,
+                    S1 :  0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1,
+                    S2 :  0.7 * xS11 + (1 - 0.7) * xS2,
+                    forecast :2 * xS11 - xS22
+                }
+               
+                // brown[i].real = parseInt(data[i].value);
+                // brown[i].alfa = 0.7;
+                // brown[i].S1 = 0.7 * parseInt(data[i].value) + (1 - 0.7) * brown[i - 1].S1;
+                // brown[i].S2 = 0.7 * brown[i].S1 + (1 - 0.7) * brown[i - 1].S2;
+                // brown[i].forecast = 2 * brown[i].S1 - brown[i].S2;
+            }
+        }
+        console.log("BROWN : ", brown)
     }
 
     // MetodaModificariiProcentuale(OcnaChart);
@@ -1251,6 +1301,7 @@ $(function () {
 
     MetodaModificariiProcentuale(OcnaChart);
     MetodaNivelariiexponentiale(OcnaChart);
+    MetodaBrown(BotosaniChart);
     //MetodaModificariiProcentualeMobile(OcnaChart);
 
 
