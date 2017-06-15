@@ -1260,31 +1260,28 @@ $(function () {
         brown[0].forecast = 2 * brown[0].S1 - brown[0].S2;
 
         for (var i = 1; i < 54; i++) {
-            if (i == 18 ||i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) {
+            if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) {
                 brown[i] = {
-                    real : 355,
-                    alfa : 0.7,
-                    S1 :  358,
+                    real: 355,
+                    alfa: 0.7,
+                    S1: 358,
+                    forecast: 321,
+                    S2: 343
                 }
-                brown[i] = {
-                     S2 :  343
-                }
-                brown[i] = {
-                      forecast :321
-                }
+
             } else {
-                var xS1 = brown[i-1].S1;
-                var xS11 =  0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1;
-                var xS2 = brown[i-1].S2;
+                var xS1 = brown[i - 1].S1;
+                var xS11 = 0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1;
+                var xS2 = brown[i - 1].S2;
                 var xS22 = 0.7 * xS11 + (1 - 0.7) * xS2;
                 brown[i] = {
-                    real : parseInt(data[i].value),
-                    alfa : 0.7,
-                    S1 :  0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1,
-                    S2 :  0.7 * xS11 + (1 - 0.7) * xS2,
-                    forecast :2 * xS11 - xS22
+                    real: parseInt(data[i].value),
+                    alfa: 0.7,
+                    S1: 0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1,
+                    S2: 0.7 * xS11 + (1 - 0.7) * xS2,
+                    forecast: 2 * xS11 - xS22
                 }
-               
+
                 // brown[i].real = parseInt(data[i].value);
                 // brown[i].alfa = 0.7;
                 // brown[i].S1 = 0.7 * parseInt(data[i].value) + (1 - 0.7) * brown[i - 1].S1;
@@ -1295,6 +1292,65 @@ $(function () {
         console.log("BROWN : ", brown)
     }
 
+    var holt = [{
+
+    }];
+
+    function MetodaHolt(data) {
+        holt[0].real = parseInt(data[0].value);
+        holt[0].alfa = 0.8;
+        holt[0].beta = 0.2;
+        holt[0].u = parseInt(data[0].value);
+        holt[0].v = 0;
+        holt[0].y = parseInt(data[0].value);
+        holt[0].forecast = 0;
+        for (var i = 1; i < 54; i++) {
+            if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) {
+                holt[i] = {
+                    real: 355,
+                    alfa: 0.8,
+                    beta: 0.2,
+                    u: holt[i - 1].u,
+                    v: holt[i - 1].v,
+                    y: holt[i - 1].real,
+                    forecast: 321,
+                }
+
+            } else {
+                var u = 0;
+                var uv = holt[i - 1].u + holt[i - 1].v;
+                if (data[i].value == "") {
+                    holt[i] = {
+                        real: holt[i - 1].real,
+                        alfa: 0.8,
+                        beta: 0.2,
+                        u: holt[i - 1].u,
+                        v: holt[i - 1].v,
+                        y: holt[i - 1].y,
+                        forecast: holt[i - 1].fortune
+                    }
+                } else {
+                    u = holt[i - 1].alfa * parseInt(data[i].value) + (1 - holt[i - 1].alfa) * uv;
+                    var u_v = u - holt[i - 1].u;
+                    var v = holt[i - 1].beta * u_v + (1 - holt[i - 1].beta) * holt[i - 1].v
+                    var fortune = u + v;
+                    holt[i] = {
+                        real: parseInt(data[i].value),
+                        alfa: 0.8,
+                        beta: 0.2,
+                        u: u,
+                        v: v,
+                        y: parseInt(data[i].value),
+                        forecast: fortune
+                    }
+                }
+
+
+            }
+        }
+        console.log("HOLT", holt)
+    }
+
     // MetodaModificariiProcentuale(OcnaChart);
     //})
 
@@ -1302,6 +1358,7 @@ $(function () {
     MetodaModificariiProcentuale(OcnaChart);
     MetodaNivelariiexponentiale(OcnaChart);
     MetodaBrown(BotosaniChart);
+    MetodaHolt(BotosaniChart);
     //MetodaModificariiProcentualeMobile(OcnaChart);
 
 
