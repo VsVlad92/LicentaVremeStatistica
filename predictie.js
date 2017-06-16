@@ -47,9 +47,18 @@ $(function () {
         ChartSelectpred($("#selectOptionPrediction").val())
     })
 
+    TmedAn();
     ChartPred1(OcnaChart);
-
-    //TabelPredictie("Ocna");
+    TabelPredictie("Ocna");
+    $('#tableslim2').slimScroll({
+        height: '350px'
+    });
+    $('#tableslim3').slimScroll({
+        height: '350px'
+    });
+    $('#tableslim4').slimScroll({
+        height: '350px'
+    });
 
     function ChartSelectpred(data) {
         switch (data) {
@@ -58,116 +67,185 @@ $(function () {
                 console.log(OcnaChart)
                 MetodaModificariiProcentuale(OcnaChart);
                 MetodaNivelariiexponentiale(OcnaChart);
+                MetodaBrown(OcnaChart);
+                MetodaHolt(OcnaChart);
+                Graph(OcnaChart);
                 break;
             case "Botosani":
                 ChartPred1(BotosaniChart)
                 MetodaModificariiProcentuale(BotosaniChart);
                 MetodaNivelariiexponentiale(BotosaniChart);
+                MetodaBrown(BotosaniChart);
+                MetodaHolt(BotosaniChart);
+                Graph(BotosaniChart);
                 break;
             case "Iasi":
                 ChartPred1(IasiChart)
                 MetodaModificariiProcentuale(IasiChart);
                 MetodaNivelariiexponentiale(IasiChart);
+                MetodaBrown(IasiChart);
+                MetodaHolt(IasiChart);
+                Graph(IasiChart);
                 break;
             case "Ceahlau":
                 ChartPred1(CeahlauChart)
                 MetodaModificariiProcentuale(CeahlauChart);
                 MetodaNivelariiexponentiale(CeahlauChart);
+                MetodaBrown(CeahlauChart);
+                MetodaHolt(CeahlauChart);
+                Graph(CeahlauChart);
                 break;
             case "Cluj":
                 ChartPred1(ClujChart)
                 MetodaModificariiProcentuale(ClujChart);
                 MetodaNivelariiexponentiale(ClujChart);
+                MetodaBrown(ClujChart);
+                MetodaHolt(ClujChart);
+                Graph(ClujChart);
                 break;
             case "Bacau":
                 ChartPred1(BacauChart)
                 MetodaModificariiProcentuale(BacauChart);
                 MetodaNivelariiexponentiale(BacauChart);
+                MetodaBrown(BacauChart);
+                MetodaHolt(BacauChart);
+                Graph(BacauChart);
                 break;
             case "Miercurea":
                 ChartPred1(MiercureaChart)
                 MetodaModificariiProcentuale(MiercureaChart);
                 MetodaNivelariiexponentiale(MiercureaChart);
+                MetodaBrown(MiercureaChart);
+                MetodaHolt(MiercureaChart);
+                Graph(MiercureaChart);
                 break;
             case "Deva":
                 ChartPred1(DevaChart)
                 MetodaModificariiProcentuale(DevaChart);
                 MetodaNivelariiexponentiale(DevaChart);
+                MetodaBrown(DevaChart);
+                MetodaHolt(DevaChart);
+                Graph(DevaChart);
                 break;
             case "Sibiu":
                 ChartPred1(SibiuChart)
                 MetodaModificariiProcentuale(SibiuChart);
                 MetodaNivelariiexponentiale(SibiuChart);
+                MetodaBrown(SibiuChart);
+                MetodaHolt(SibiuChart);
+                Graph(SibiuChart);
                 break;
             case "Varfu":
                 ChartPred1(VarfuChart)
                 MetodaModificariiProcentuale(VarfuChart);
                 MetodaNivelariiexponentiale(VarfuChart);
+                MetodaBrown(VarfuChart);
+                MetodaHolt(VarfuChart);
+                Graph(VarfuChart);
                 break;
             case "Caransebes":
                 ChartPred1(CaransebesChart)
                 MetodaModificariiProcentuale(CaransebesChart);
                 MetodaNivelariiexponentiale(CaransebesChart);
+                MetodaBrown(CaransebesChart);
+                MetodaHolt(CaransebesChart);
+                Graph(CaransebesChart);
                 break;
             case "Galati":
                 ChartPred1(GalatiChart)
                 MetodaModificariiProcentuale(GalatiChart);
                 MetodaNivelariiexponentiale(GalatiChart);
+                MetodaBrown(GalatiChart);
+                MetodaHolt(GalatiChart);
+                Graph(GalatiChart);
                 break;
             case "Tulcea":
                 ChartPred1(TulceaChart)
                 MetodaModificariiProcentuale(TulceaChart);
                 MetodaNivelariiexponentiale(TulceaChart);
+                MetodaBrown(TulceaChart);
+                MetodaHolt(TulceaChart);
+                Graph(TulceaChart);
                 break;
             case "Ramnicu":
                 ChartPred1(RamnicuChart)
                 MetodaModificariiProcentuale(RamnicuChart);
                 MetodaNivelariiexponentiale(RamnicuChart);
+                MetodaBrown(RamnicuChart);
+                MetodaHolt(RamnicuChart);
+                Graph(RamnicuChart);
                 break;
             case "Buzau":
                 ChartPred1(BuzauChart)
                 MetodaModificariiProcentuale(BuzauChart);
                 MetodaNivelariiexponentiale(BuzauChart);
+                MetodaBrown(BuzauChart);
+                MetodaHolt(BuzauChart);
+                Graph(BuzauChart);
                 break;
             case "Sulina":
                 ChartPred1(SulinaChart)
                 MetodaModificariiProcentuale(SulinaChart);
                 MetodaNivelariiexponentiale(SulinaChart);
+                MetodaBrown(SulinaChart);
+                MetodaHolt(SulinaChart);
+                Graph(SulinaChart);
                 break;
             case "Drobeta":
                 ChartPred1(DrobetaChart)
                 MetodaModificariiProcentuale(DrobetaChart);
                 MetodaNivelariiexponentiale(DrobetaChart);
+                MetodaBrown(DrobetaChart);
+                MetodaHolt(DrobetaChart);
+                Graph(DrobetaChart);
                 break;
             case "Bucuresti":
                 ChartPred1(BucurestiChart)
                 MetodaModificariiProcentuale(BucurestiChart);
                 MetodaNivelariiexponentiale(BucurestiChart);
+                MetodaBrown(BucurestiChart);
+                MetodaHolt(BucurestiChart);
+                Graph(BucurestiChart);
                 break;
             case "Craiova":
                 ChartPred1(CraiovaChart)
                 MetodaModificariiProcentuale(CraiovaChart);
                 MetodaNivelariiexponentiale(CraiovaChart);
+                MetodaBrown(CraiovaChart);
+                MetodaHolt(CraiovaChart);
+                Graph(CraiovaChart);
                 break;
             case "Calarasi":
                 ChartPred1(CalarasiChart)
                 MetodaModificariiProcentuale(CalarasiChart);
                 MetodaNivelariiexponentiale(CalarasiChart);
+                MetodaBrown(CalarasiChart);
+                MetodaHolt(CalarasiChart);
+                Graph(CalarasiChart);
                 break;
             case "Rosiorii":
                 ChartPred1(RosioriiChart)
                 MetodaModificariiProcentuale(RosioriiChart);
                 MetodaNivelariiexponentiale(RosioriiChart);
+                MetodaBrown(RosioriiChart);
+                MetodaHolt(RosioriiChart);
+                Graph(RosioriiChart);
                 break;
             case "Constanta":
                 ChartPred1(ConstantaChart)
                 MetodaModificariiProcentuale(ConstantaChart);
                 MetodaNivelariiexponentiale(ConstantaChart);
+                MetodaBrown(ConstantaChart);
+                MetodaHolt(ConstantaChart);
+                Graph(ConstantaChart);
                 break;
             case "Arad":
                 ChartPred1(AradChart)
                 MetodaModificariiProcentuale(AradChart);
                 MetodaNivelariiexponentiale(AradChart);
+                MetodaBrown(AradChart);
+                MetodaHolt(AradChart);
+                Graph(AradChart);
                 break;
         }
     };
@@ -1250,26 +1328,29 @@ $(function () {
     }];
     function MetodaBrown(data) {
         console.log("metoda brown", data);
-
-
-
         brown[0].real = parseInt(data[0].value);
         brown[0].alfa = 0.7;
         brown[0].S1 = 0.7 * parseInt(data[0].value) + (1 - 0.7) * brown[0].real;
         brown[0].S2 = 0.7 * brown[0].S1 + (1 - 0.7) * brown[0].real;
         brown[0].forecast = 2 * brown[0].S1 - brown[0].S2;
+        brown[0].an = data[0].date;
 
-        for (var i = 1; i < 54; i++) {
+        for (var i = 1; i < 56; i++) {
             if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) {
                 brown[i] = {
                     real: 355,
                     alfa: 0.7,
                     S1: 358,
                     forecast: 321,
-                    S2: 343
+                    S2: 343,
+                    an: ""
                 }
+                data[i].value = "343";
 
             } else {
+                if (data[i].value == "") {
+                    data[i].value = "343";
+                }
                 var xS1 = brown[i - 1].S1;
                 var xS11 = 0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1;
                 var xS2 = brown[i - 1].S2;
@@ -1279,7 +1360,8 @@ $(function () {
                     alfa: 0.7,
                     S1: 0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1,
                     S2: 0.7 * xS11 + (1 - 0.7) * xS2,
-                    forecast: 2 * xS11 - xS22
+                    forecast: 2 * xS11 - xS22,
+                    an: data[i].date
                 }
 
                 // brown[i].real = parseInt(data[i].value);
@@ -1289,14 +1371,30 @@ $(function () {
                 // brown[i].forecast = 2 * brown[i].S1 - brown[i].S2;
             }
         }
-        console.log("BROWN : ", brown)
+        $("#tabel3").remove();
+        $("#tab3").append("<tbody id=tabel3></tbody>");
+        for (var i = 0; i < 56; i++) {
+            if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) { i++ }
+            var an = brown[i].an;
+            var alfa = brown[i].alfa;
+            var s1 = brown[i].S1;
+            var s2 = brown[i].S2;
+            var reall = brown[i].real;
+            var prezis = brown[i].forecast;
+
+            $("#tabel3").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + s1 + "</td>" + "<td>" + s2 + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "</tr>");
+        }
+        // console.log("BROWN : ", brown);
     }
 
-    var holt = [{
 
-    }];
+
+
+
+    var holt = [{}];
 
     function MetodaHolt(data) {
+        holt[0].an = data[0].date;
         holt[0].real = parseInt(data[0].value);
         holt[0].alfa = 0.8;
         holt[0].beta = 0.2;
@@ -1304,9 +1402,10 @@ $(function () {
         holt[0].v = 0;
         holt[0].y = parseInt(data[0].value);
         holt[0].forecast = 0;
-        for (var i = 1; i < 54; i++) {
+        for (var i = 1; i < 56; i++) {
             if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) {
                 holt[i] = {
+                    an: data[i].date,
                     real: 355,
                     alfa: 0.8,
                     beta: 0.2,
@@ -1320,34 +1419,46 @@ $(function () {
                 var u = 0;
                 var uv = holt[i - 1].u + holt[i - 1].v;
                 if (data[i].value == "") {
-                    holt[i] = {
-                        real: holt[i - 1].real,
-                        alfa: 0.8,
-                        beta: 0.2,
-                        u: holt[i - 1].u,
-                        v: holt[i - 1].v,
-                        y: holt[i - 1].y,
-                        forecast: holt[i - 1].fortune
-                    }
-                } else {
-                    u = holt[i - 1].alfa * parseInt(data[i].value) + (1 - holt[i - 1].alfa) * uv;
-                    var u_v = u - holt[i - 1].u;
-                    var v = holt[i - 1].beta * u_v + (1 - holt[i - 1].beta) * holt[i - 1].v
-                    var fortune = u + v;
-                    holt[i] = {
-                        real: parseInt(data[i].value),
-                        alfa: 0.8,
-                        beta: 0.2,
-                        u: u,
-                        v: v,
-                        y: parseInt(data[i].value),
-                        forecast: fortune
-                    }
+                    data[i].value = 343;
+
                 }
+                u = holt[i - 1].alfa * parseInt(data[i].value) + (1 - holt[i - 1].alfa) * uv;
+                var u_v = u - holt[i - 1].u;
+                var v = holt[i - 1].beta * u_v + (1 - holt[i - 1].beta) * holt[i - 1].v
+                var fortune = u + v;
+                holt[i] = {
+                    an: data[i].date,
+                    real: parseInt(data[i].value),
+                    alfa: 0.8,
+                    beta: 0.2,
+                    u: u,
+                    v: v,
+                    y: parseInt(data[i].value),
+                    forecast: fortune
+                }
+                // }
 
 
             }
         }
+        $("#tabel4").remove();
+        $("#tab4").append("<tbody id=tabel4></tbody>");
+        for (var i = 0; i < 56; i++) {
+            if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) { i++ }
+            var an = holt[i].an;
+            var alfa = holt[i].alfa;
+            var beta = holt[i].beta;
+            var u = holt[i].u;
+            var v = holt[i].v;
+            var reall = holt[i].y;
+            var prezis = holt[i].forecast;
+
+            $("#tabel4").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + beta + "</td>" + "<td>" + u + "</td>" + "<td>" + v + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "</tr>");
+        }
+
+
+
+
         console.log("HOLT", holt)
     }
 
@@ -1357,9 +1468,159 @@ $(function () {
 
     MetodaModificariiProcentuale(OcnaChart);
     MetodaNivelariiexponentiale(OcnaChart);
-    MetodaBrown(BotosaniChart);
-    MetodaHolt(BotosaniChart);
+    MetodaBrown(OcnaChart);
+    MetodaHolt(OcnaChart);
     //MetodaModificariiProcentualeMobile(OcnaChart);
+    var big = [];
+    function Graph(data1) {
+        var real = []
+        for (var i = 0; i < 56; i++) {
+            real[i] = {
+                an: data1[i].date,
+                value: parseInt(data1[i].value)
+            }
+            real[19] = {
+                an: "1980",
+                value: parseInt(data1[19].value)
+            }
+            real[23] = {
+                an: "1984",
+                value: parseInt(data1[23].value)
+            }
+            real[30] = {
+                an: "1991",
+                value: parseInt(data1[30].value)
+            }
+            real[39] = {
+                an: "2000",
+                value: parseInt(data1[39].value)
+            }
+            real[48] = {
+                an: "2009",
+                value: parseInt(data1[48].value)
+            }
+            real[54] = {
+                an: "2015",
+                value: parseInt(data1[54].value)
+            }
+        }
+        var br = []
+        for (var i = 0; i < 56; i++) {
+            br[i] = {
+                an: brown[i].an,
+                value: brown[i].forecast
+            }
+            br[18] = {
+                an: "1979",
+                value: brown[18].forecast
+            }
+            br[19] = {
+                an: "1980",
+                value: brown[19].forecast
+            }
+            br[22] = {
+                an: "1983",
+                value: brown[22].forecast
+            }
+            br[23] = {
+                an: "1984",
+                value: brown[23].forecast
+            }
+            br[29] = {
+                an: "1990",
+                value: brown[29].forecast
+            }
+            br[30] = {
+                an: "1991",
+                value: brown[30].forecast
+            }
+            br[38] = {
+                an: "1999",
+                value: brown[38].forecast
+            }
+            br[39] = {
+                an: "2000",
+                value: brown[39].forecast
+            }
+            br[47] = {
+                an: "2008",
+                value: brown[47].forecast
+            }
+            br[48] = {
+                an: "2009",
+                value: brown[48].forecast
+            }
+            br[53] = {
+                an: "2014",
+                value: brown[53].forecast
+            }
+            br[54] = {
+                an: "2015",
+                value: brown[54].forecast
+            }
+
+        }
+        var hl = []
+        for (var i = 0; i < 56; i++) {
+            hl[i] = {
+                an: holt[i].an,
+                value: holt[i].forecast
+            }
+            hl[19] = {
+                an: "1980",
+                value: parseInt(holt[19].forecast)
+            }
+            hl[23] = {
+                an: "1984",
+                value: parseInt(holt[23].forecast)
+            }
+            hl[30] = {
+                an: "1991",
+                value: parseInt(holt[30].forecast)
+            }
+            hl[39] = {
+                an: "2000",
+                value: parseInt(holt[39].forecast)
+            }
+            hl[48] = {
+                an: "2009",
+                value: parseInt(holt[48].forecast)
+            }
+            hl[54] = {
+                an: "2015",
+                value: parseInt(holt[54].forecast)
+            }
+        }
+        big = [real, br, hl];
+
+        function Draw(data) {
+            // for (var i = 0; i < data.length; i++) {
+            //     data[i] = MG.convert.date(data[i], 'date');
+            // }
+
+            MG.data_graphic({
+                title: "Chart reprezentand Datele reale, Datele obtinute prin Brown si datele obtinute prin Holt",
+                description: "This line chart contains multiple lines.",
+                data: data,
+                width: 1300,
+                height: 500,
+                right: 40,
+                legend: ['Datele Reale', 'Brown', 'Holt'],
+                legend_target: '.legend',
+                target: "#all",
+                x_accessor: 'an',
+                y_accessor: 'value',
+                aggregate_rollover: true
+            });
+        }
+
+
+        Draw(big);
+        console.log("REAL ", big)
+    }
+    Graph(OcnaChart);
+
+
 
 
 
