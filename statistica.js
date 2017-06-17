@@ -25,6 +25,7 @@ $(function () {
     var Constanta = []; var ConstantaChart = [];
     var Tmed = [{
     }];
+    var dataBar = [];
 
     $("#selectOption").change(function () {
         console.log($("#selectOption").val());
@@ -215,6 +216,28 @@ $(function () {
         }
         function Run(dataMedii) {
             console.log(dataMedii);
+             var x = 1961 
+             for (var j = 0; x < 2016; j++){
+                  x = 1961 + j;
+                 
+                 if(x == 1980 || x == 1984 ||x == 1991 || x == 2000 || x == 2009  || x == 2015){
+                     var z = 300 / 365;
+                    dataBar[j] = {
+                        an:x,
+                        value: z.toFixed(3)
+                    }
+                 }else{
+                     var z = dataMedii[x].TemperaturaMedie / 365
+                    dataBar[j] = {
+                        an:x,
+                        value: z.toFixed(3)
+                    }
+                 }
+                   //console.log("DATA BAR ", dataBar);
+             }
+
+           
+            ChartBar (dataBar);
             $("#tabel1").remove();
             $("#tab").append("<tbody id=tabel1></tbody>");
             for (i = 1961; i < dataMedii.length; i++) {
@@ -1154,6 +1177,8 @@ $(function () {
             height: '250px'
         });
     });
+
+    
 
 });
 
