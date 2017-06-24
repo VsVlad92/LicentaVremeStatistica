@@ -1381,8 +1381,9 @@ $(function () {
             var s2 = brown[i].S2;
             var reall = brown[i].real;
             var prezis = brown[i].forecast;
+            var Eroare = brown[i].forecast - brown[i].real;
 
-            $("#tabel3").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + s1 + "</td>" + "<td>" + s2 + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "</tr>");
+            $("#tabel3").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + s1 + "</td>" + "<td>" + s2 + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis.toFixed(2) + "</td>"  + "<td>" + Eroare.toFixed(2) + "</td>" + "</tr>");
         }
         // console.log("BROWN : ", brown);
     }
@@ -1452,8 +1453,9 @@ $(function () {
             var v = holt[i].v;
             var reall = holt[i].y;
             var prezis = holt[i].forecast;
+            var eroare = prezis-reall;
 
-            $("#tabel4").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + beta + "</td>" + "<td>" + u + "</td>" + "<td>" + v + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "</tr>");
+            $("#tabel4").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + beta + "</td>" + "<td>" + u + "</td>" + "<td>" + v + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis.toFixed(2) + "</td>" +  "<td>" + eroare.toFixed(2) + "</td>"+"</tr>");
         }
 
 

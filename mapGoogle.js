@@ -102,8 +102,11 @@ function setColor(nr){
 
 }
 
-function Write(){
-  console.log("WRITE")
+
+
+var Write = function(){
+
+      console.log("WRITE")
         var heatMapData =[];
         var i=0;
         statiiMeteo.forEach(function(statie,index){
@@ -136,6 +139,8 @@ function Write(){
          if(todisplay[i] != undefined){ 
           heatMapData.forEach(function(statie,index){
             // Add the circle for this city to the map.
+           
+          
             var cityCircle = new google.maps.Circle({
               id:i,
               strokeColor: setColor(todisplay[i].TMAX),
@@ -185,7 +190,7 @@ function Write(){
             i++;
           })
    }
-}
+  }
 
 function Clear(){
   console.log("CLEAR")
@@ -196,5 +201,3 @@ function Clear(){
           markers[i].setMap(null);
         }
 }
-
-
