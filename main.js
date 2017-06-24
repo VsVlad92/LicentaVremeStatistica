@@ -160,7 +160,7 @@ get_url = function(an){
                   elem.TMED = data[valZi+q].TMED;
                   elem.TMIN = data[valZi+q].TMIN;
                   todisplay.push(elem);
-                console.log(data[q + valZi].DATCLIM , " ",data[q + valZi].CODST, " ",  data[q+ valZi].TMAX  )
+                console.log("Ianuarie", data[q + valZi].DATCLIM , " ",data[q + valZi].CODST, " ",  data[q+ valZi].TMAX  )
                   //$("#values").append("<p>"+ data[parseInt($('#zi').val())-1].DATCLIM + " "+ data[parseInt($('#zi').val())-1].CODST + " "+ data[parseInt($('#zi').val())-1].TMAX+" Grade celsius</p>");
                 for(var i=1; i<22 ; i++){
                   if(bisect(an)){
@@ -178,7 +178,7 @@ get_url = function(an){
                     elem.TMED = data[valZi+q].TMED;
                     elem.TMIN = data[valZi+q].TMIN;
                     todisplay.push(elem);  
-                    console.log(data[q +valZi ].DATCLIM , " ",data[q +valZi].CODST, " ",  data[q+ valZi ].TMAX )
+                    console.log("Ianuarie" , data[q +valZi ].DATCLIM , " ",data[q +valZi].CODST, " ",  data[q+ valZi ].TMAX )
                   //$("#values").append("<p>"+ data[parseInt($('#zi').val()) -1 + q].DATCLIM + " "+ data[parseInt($('#zi').val()) -1 + q].CODST +" "+ data[parseInt($('#zi').val())-1 + q].TMAX+" Grade celsius</p>");
                 }
                   break;
