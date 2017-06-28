@@ -156,7 +156,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <div  id="chartdivBar" style="width:1550px;height:500px;"></div>
+                            <div id="chartdivBar" style="width:1550px;height:500px;"></div>
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                 <div class="row">
                     <div class="x_panel">
                         <div class="x_title">
-                             <strong>Grafic reprezentand temperaturile medii ale tuturor statiilor</strong>
+                            <strong>Grafic reprezentand temperaturile medii ale tuturor statiilor</strong>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -230,7 +230,7 @@
                 <div class="row">
                     <div class="x_panel col-md-6 col-sm-6 col-xs-12">
                         <div class="x_title">
-                             <strong>Grafic si tabel reprezentand temperaturile adunate pe zile </strong>
+                            <strong>Grafic si tabel reprezentand temperaturile adunate pe zile </strong>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -271,10 +271,14 @@
                 <div class="row ">
                     <div class="x_panel col-md-6 col-sm-6 col-xs-12">
                         <div class="x_title">
-                            <strong>Tabel cu Predictiile dupa Metoda Brown</strong>
+                            <strong>Tabel cu Predictiile folosind Metoda Brown</strong>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
+                            <div class="row portlet light bordered">
+                                <span class="help-block"> Alege anul:  </span>
+                                <input id="range_04">
+                            </div>
                             <br>
                             <div style="padding-left: 115px;" class="row title"></div>
                             <br>
@@ -289,9 +293,10 @@
                                                         <th> Alfa </th>
                                                         <th> S1 </th>
                                                         <th> S2 </th>
-                                                        <th> Suma temperaturilor Reala </th>
-                                                        <th> Suma temperaturilor Prezisa </th>
-                                                        <th> Eroare </th>
+                                                        <th> Temperatur Reala medie </th>
+                                                        <th> Temperatura Prezisa medie </th>
+                                                        <th> Mean Squared Error </th>
+                                                        <th> Mean Squared Error Total </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="tabel3">
@@ -308,10 +313,14 @@
                 <div class="row ">
                     <div class="x_panel col-md-6 col-sm-6 col-xs-12">
                         <div class="x_title">
-                            <strong>Tabel cu Predictiile dupa Metoda Holt</strong>
+                            <strong>Tabel cu Predictiile folosind Metoda Holt</strong>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
+                            <div class="row portlet light bordered">
+                                <span class="help-block"> Alege anul:  </span>
+                                <input id="range_05">
+                            </div>
                             <br>
                             <div style="padding-left: 115px;" class="row title"></div>
                             <br>
@@ -327,9 +336,10 @@
                                                         <th> Beta </th>
                                                         <th> U </th>
                                                         <th> V </th>
-                                                        <th> Suma temperaturilor Reala </th>
-                                                        <th> Suma temperaturilor Prezisa </th>
-                                                        <th> Eroare </th>
+                                                        <th> Temperatura Reala medie </th>
+                                                        <th> Temperatura Prezisa medie </th>
+                                                        <th> Mean Squared Error </th>
+                                                        <th> Mean Squared Error Total </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="tabel4">
@@ -394,11 +404,11 @@
     <script src="./chartStatistica.js"></script>
     <script src="./chartPredictie.js"></script>
     <script src="./ion.rangeSlider.js"></script>
-     <script src="./main.js"></script>
+    <script src="./main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVgzYhF2gqK_s1dNqPAn4C6eS6tKgNQyk&callback=initMap&libraries=visualization"
         async defer type="text/javascript"></script>
     <script src="./mapGoogle.js"></script>
-   
+
 </body>
 
 </html>

@@ -314,7 +314,7 @@ $(function () {
                             OcnaChart[z + 1] = {
                                 "name": "Ocna ",
                                 "date": an,
-                                "value": ""
+                                "value": "1"
                             }
                         } else {
                             OcnaChart[z] = {

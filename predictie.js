@@ -362,12 +362,12 @@ $(function () {
             }
             for (i = 1961; i < dataMedii.length; i++) {
                 if (i == 1984 || i == 1991 || i == 2015 || i == 2000 || i == 2009) { i++ }
-                temp1 = dataMedii[i].TemperaturaMedie + " ℃";
+                temp1 = (dataMedii[i].TemperaturaMedie / 365).toFixed(4) + " ℃";
                 // var temp3 = (dataMedii[i].TemperaturaMedieMinima) + " ℃";
-                xy = x * dataMedii[i].TemperaturaMedie;
+                xy = x * (dataMedii[i].TemperaturaMedie / 365).toFixed(4);
                 suma = suma + xy;
                 sumax2 = sumax2 + x * x;
-                sumaani = sumaani + dataMedii[i].TemperaturaMedie;
+                sumaani = sumaani + (dataMedii[i].TemperaturaMedie / 365).toFixed(4);
                 $("#tabel2").append("<tr>" + "<td>" + i + "</td>" + "<td>" + temp1 + "</td>" + "<td>" + x + "</td>" + "<td>" + xy + "</td>" + "</tr>");
                 x++;
             }
@@ -461,7 +461,7 @@ $(function () {
                         }
                         Botosani[i] = {
                             Statia: "Botosani",
-                            TemperaturaMedie: tMedB,
+                            TemperaturaMedie: (tMedB / 365).toFixed(4),
                             TemperaturaMedieMaxima: tMedMaxB,
                             TemperaturaMedieMinima: tMedMinB
                         }
@@ -1302,7 +1302,7 @@ $(function () {
         var Y = (1 + MMP) * Yt;
         console.log("Metoda modificarii procentuale mobile", Y)
         //$("#predictieMMP").val(Y.toFixed(0))
-        return Y;
+        return (Y / 365).toFixed(4);
     }
     function MetodaModificariiProcentuale(data) {
         var Yt = parseInt(data[55].value);
@@ -1310,8 +1310,8 @@ $(function () {
         var MMP = (Yt - Y0) / 54;
         var Y = (Y0 + 55 * MMP);
         //console.log("Metoda modificarii procentuale ", Y)
-        $("#predictieMMP").val(Y.toFixed(0))
-        return Y;
+        $("#predictieMMP").val((Y / 365).toFixed(4))
+        return (Y / 365).toFixed(4);
     }
 
     function MetodaNivelariiexponentiale(data) {
@@ -1320,7 +1320,7 @@ $(function () {
         var Ytt = parseInt(data[53].value);
         var Y = 0.5 * Yt + (1 - 0.5) * Ytt;
         console.log("MetodaNivelariiexponentiale ", Y)
-        $("#predictieMME").val(Y.toFixed(0))
+        $("#predictieMME").val((Y / 365).toFixed(4))
     }
 
     var brown = [{
@@ -1335,7 +1335,7 @@ $(function () {
         brown[0].forecast = 2 * brown[0].S1 - brown[0].S2;
         brown[0].an = data[0].date;
 
-        for (var i = 1; i < 56; i++) {
+        for (var i = 1; i < 60; i++) {
             if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) {
                 brown[i] = {
                     real: 355,
@@ -1348,21 +1348,36 @@ $(function () {
                 data[i].value = "343";
 
             } else {
-                if (data[i].value == "") {
-                    data[i].value = "343";
+                if (data[i] != undefined) {
+                    if (data[i].value == "") {
+                        data[i].value = "343";
+                    }
+                    var xS1 = brown[i - 1].S1;
+                    var xS11 = 0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1;
+                    var xS2 = brown[i - 1].S2;
+                    var xS22 = 0.7 * xS11 + (1 - 0.7) * xS2;
+                    brown[i] = {
+                        real: parseInt(data[i].value),
+                        alfa: 0.7,
+                        S1: 0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1,
+                        S2: 0.7 * xS11 + (1 - 0.7) * xS2,
+                        forecast: 2 * xS11 - xS22,
+                        an: data[i].date
+                    }
+                } else {
+                    var xS1 = brown[i - 1].S1;
+                    var xS11 = 0.7 * parseInt(brown[i - 1].forecast) + (1 - 0.7) * xS1;
+                    var xS2 = brown[i - 1].S2;
+                    var xS22 = 0.7 * xS11 + (1 - 0.7) * xS2;
+                    brown[i] = {
+                        alfa: 0.7,
+                        S1: 0.7 * parseInt(brown[i - 1].forecast) + (1 - 0.7) * xS1,
+                        S2: 0.7 * xS11 + (1 - 0.7) * xS2,
+                        forecast: 2 * xS11 - xS22,
+                        an: 1961 + i
+                    }
                 }
-                var xS1 = brown[i - 1].S1;
-                var xS11 = 0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1;
-                var xS2 = brown[i - 1].S2;
-                var xS22 = 0.7 * xS11 + (1 - 0.7) * xS2;
-                brown[i] = {
-                    real: parseInt(data[i].value),
-                    alfa: 0.7,
-                    S1: 0.7 * parseInt(data[i].value) + (1 - 0.7) * xS1,
-                    S2: 0.7 * xS11 + (1 - 0.7) * xS2,
-                    forecast: 2 * xS11 - xS22,
-                    an: data[i].date
-                }
+
 
                 // brown[i].real = parseInt(data[i].value);
                 // brown[i].alfa = 0.7;
@@ -1373,18 +1388,66 @@ $(function () {
         }
         $("#tabel3").remove();
         $("#tab3").append("<tbody id=tabel3></tbody>");
-        for (var i = 0; i < 56; i++) {
+        $(function () {
+            $("#range_04").ionRangeSlider({
+                type: "double",
+                min: 1961,
+                max: 2020,
+                from: 1961,
+                to: 2020,
+                grid: true,
+                grid_num: 11,
+                onFinish: function (data) {
+                    console.log("selectat", data);
+                    ReTableBrown(data);
+                }
+            });
+        });
+        var eroareTotal = 0
+        for (var i = 0; i < 60; i++) {
             if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) { i++ }
             var an = brown[i].an;
             var alfa = brown[i].alfa;
-            var s1 = brown[i].S1;
-            var s2 = brown[i].S2;
-            var reall = brown[i].real;
-            var prezis = brown[i].forecast;
-            var Eroare = brown[i].forecast - brown[i].real;
+            var s1 = (brown[i].S1 / 365).toFixed(4);
+            var s2 = (brown[i].S2 / 365).toFixed(4);
+            var reall = (brown[i].real / 365).toFixed(4);
+            var prezis = (brown[i].forecast / 365).toFixed(4);
+            var Eroare = (reall - prezis) * (reall - prezis);
+            if (i == 0) { }
+            else {
+                eroareTotal = eroareTotal + Eroare
+            }
 
-            $("#tabel3").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + s1 + "</td>" + "<td>" + s2 + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis.toFixed(2) + "</td>"  + "<td>" + Eroare.toFixed(2) + "</td>" + "</tr>");
+            $("#tabel3").append("<tr class=tabel3>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + s1 + "</td>" + "<td>" + s2 + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "<td>" + Eroare.toFixed(4) + "</td>" +"<td>" + eroareTotal + "</td>" + "</tr>");
         }
+
+        function ReTableBrown(data) {
+            $("#tabel3").remove();
+            $("#tab3").append("<tbody id=tabel3></tbody>");
+            var x = data.from - 1961;
+            var j = 2016 - data.to;
+            var z = 55 - j;
+            console.log("de la ", x, "pana la ", j, "Cate ", z);
+            for (var i = x; i < z + 1; i++) {
+                if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) { i++ }
+                var an = brown[i].an;
+                var alfa = brown[i].alfa;
+                var s1 = (brown[i].S1 / 365).toFixed(4);
+                var s2 = (brown[i].S2 / 365).toFixed(4);
+                var reall = (brown[i].real / 365).toFixed(4);
+                var prezis = (brown[i].forecast / 365).toFixed(4);
+                var Eroare = (reall - prezis) * (reall - prezis);
+                if (i == 0) { }
+                else {
+                    eroareTotal = eroareTotal + Eroare
+                }
+
+                $("#tabel3").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + s1 + "</td>" + "<td>" + s2 + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "<td>" + Eroare.toFixed(4) + "</td>" +  "<td>" + eroareTotal + "</td>" + "</tr>");
+            }
+        }
+
+
+
         // console.log("BROWN : ", brown);
     }
 
@@ -1403,7 +1466,7 @@ $(function () {
         holt[0].v = 0;
         holt[0].y = parseInt(data[0].value);
         holt[0].forecast = 0;
-        for (var i = 1; i < 56; i++) {
+        for (var i = 1; i < 60; i++) {
             if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) {
                 holt[i] = {
                     an: data[i].date,
@@ -1417,45 +1480,110 @@ $(function () {
                 }
 
             } else {
-                var u = 0;
-                var uv = holt[i - 1].u + holt[i - 1].v;
-                if (data[i].value == "") {
-                    data[i].value = 343;
+                if (data[i] != undefined) {
+                    if (data[i].value == "") {
+                        data[i].value = 343;
+
+                    }
+                    var u = 0;
+                    var uv = holt[i - 1].u + holt[i - 1].v;
+                    u = holt[i - 1].alfa * parseInt(data[i].value) + (1 - holt[i - 1].alfa) * uv;
+                    var u_v = u - holt[i - 1].u;
+                    var v = holt[i - 1].beta * u_v + (1 - holt[i - 1].beta) * holt[i - 1].v
+                    var fortune = u + v;
+                    holt[i] = {
+                        an: data[i].date,
+                        real: parseInt(data[i].value),
+                        alfa: 0.8,
+                        beta: 0.2,
+                        u: u,
+                        v: v,
+                        y: parseInt(data[i].value),
+                        forecast: fortune
+                    }
+                    // }
 
                 }
-                u = holt[i - 1].alfa * parseInt(data[i].value) + (1 - holt[i - 1].alfa) * uv;
-                var u_v = u - holt[i - 1].u;
-                var v = holt[i - 1].beta * u_v + (1 - holt[i - 1].beta) * holt[i - 1].v
-                var fortune = u + v;
-                holt[i] = {
-                    an: data[i].date,
-                    real: parseInt(data[i].value),
-                    alfa: 0.8,
-                    beta: 0.2,
-                    u: u,
-                    v: v,
-                    y: parseInt(data[i].value),
-                    forecast: fortune
+                else {
+                    var u = 0;
+                    var uv = holt[i - 1].u + holt[i - 1].v;
+                    u = holt[i - 1].alfa * parseInt(holt[i - 1].forecast) + (1 - holt[i - 1].alfa) * uv;
+                    var u_v = u - holt[i - 1].u;
+                    var v = holt[i - 1].beta * u_v + (1 - holt[i - 1].beta) * holt[i - 1].v
+                    var fortune = u + v;
+                    holt[i] = {
+                        an: 1961 + i,
+                        alfa: 0.8,
+                        beta: 0.2,
+                        u: u,
+                        v: v,
+                        forecast: fortune
+                    }
+
                 }
-                // }
-
-
             }
         }
         $("#tabel4").remove();
         $("#tab4").append("<tbody id=tabel4></tbody>");
-        for (var i = 0; i < 56; i++) {
+
+        $(function () {
+            $("#range_05").ionRangeSlider({
+                type: "double",
+                min: 1961,
+                max: 2020,
+                from: 1961,
+                to: 2020,
+                grid: true,
+                grid_num: 11,
+                onFinish: function (data) {
+                    console.log("selectat", data);
+                    ReTableHolt(data);
+                }
+            });
+        });
+
+        var eroareTotal = 0
+        for (var i = 0; i < 60; i++) {
             if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) { i++ }
             var an = holt[i].an;
             var alfa = holt[i].alfa;
             var beta = holt[i].beta;
-            var u = holt[i].u;
-            var v = holt[i].v;
-            var reall = holt[i].y;
-            var prezis = holt[i].forecast;
-            var eroare = prezis-reall;
+            var u = (holt[i].u / 356).toFixed(4);
+            var v = (holt[i].v / 365).toFixed(4);
+            var reall = (holt[i].y / 365).toFixed(4);
+            var prezis = (holt[i].forecast / 365).toFixed(4);
+            var eroare = (reall - prezis) * (reall - prezis);
+            if (i == 0) { }
+            else {
+                eroareTotal = eroareTotal + eroare
+            }
 
-            $("#tabel4").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + beta + "</td>" + "<td>" + u + "</td>" + "<td>" + v + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis.toFixed(2) + "</td>" +  "<td>" + eroare.toFixed(2) + "</td>"+"</tr>");
+            $("#tabel4").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + beta + "</td>" + "<td>" + u + "</td>" + "<td>" + v + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "<td>" + eroare.toFixed(4) + "</td>" + "<td>" + eroareTotal + "</td>" + "</tr>");
+        }
+        eroareTotal = 0;
+        function ReTableHolt(data) {
+            $("#tabel4").remove();
+            $("#tab4").append("<tbody id=tabel4></tbody>");
+            var x = data.from - 1961;
+            var j = 2016 - data.to;
+            var z = 55 - j;
+            for (var i = x; i < z + 1; i++) {
+                var an = holt[i].an;
+                var alfa = holt[i].alfa;
+                var beta = holt[i].beta;
+                var u = (holt[i].u / 356).toFixed(4);
+                var v = (holt[i].v / 365).toFixed(4);
+                var reall = (holt[i].y / 365).toFixed(4);
+                var prezis = (holt[i].forecast / 365).toFixed(4);
+                var eroare = (reall - prezis) * (reall - prezis);
+                eroareTotal = eroareTotal + eroare;
+                if (i == 0) { }
+                else {
+                    eroareTotal = eroareTotal + eroare
+                }
+                $("#tabel4").append("<tr>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + beta + "</td>" + "<td>" + u + "</td>" + "<td>" + v + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "<td>" + eroare.toFixed(4) + "</td>" + "<td>" + eroareTotal + "</td>" + "</tr>");
+            }
+
         }
 
 
@@ -1479,118 +1607,118 @@ $(function () {
         for (var i = 0; i < 56; i++) {
             real[i] = {
                 an: data1[i].date,
-                value: parseInt(data1[i].value)
+                value: (parseInt(data1[i].value) / 365).toFixed(4)
             }
             real[19] = {
                 an: "1980",
-                value: parseInt(data1[19].value)
+                value: (parseInt(data1[19].value) / 365).toFixed(4)
             }
             real[23] = {
                 an: "1984",
-                value: parseInt(data1[23].value)
+                value: (parseInt(data1[23].value) / 365).toFixed(4)
             }
             real[30] = {
                 an: "1991",
-                value: parseInt(data1[30].value)
+                value: (parseInt(data1[30].value) / 365).toFixed(4)
             }
             real[39] = {
                 an: "2000",
-                value: parseInt(data1[39].value)
+                value: (parseInt(data1[39].value) / 365).toFixed(4)
             }
             real[48] = {
                 an: "2009",
-                value: parseInt(data1[48].value)
+                value: (parseInt(data1[48].value) / 365).toFixed(4)
             }
             real[54] = {
                 an: "2015",
-                value: parseInt(data1[54].value)
+                value: (parseInt(data1[54].value) / 365).toFixed(4)
             }
         }
         var br = []
-        for (var i = 0; i < 56; i++) {
+        for (var i = 0; i < 60; i++) {
             br[i] = {
                 an: brown[i].an,
-                value: brown[i].forecast
+                value: (brown[i].forecast / 365).toFixed(4)
             }
             br[18] = {
                 an: "1979",
-                value: brown[18].forecast
+                value: (brown[18].forecast / 365).toFixed(4)
             }
             br[19] = {
                 an: "1980",
-                value: brown[19].forecast
+                value: (brown[19].forecast / 365).toFixed(4)
             }
             br[22] = {
                 an: "1983",
-                value: brown[22].forecast
+                value: (brown[22].forecast / 365).toFixed(4)
             }
             br[23] = {
                 an: "1984",
-                value: brown[23].forecast
+                value: (brown[23].forecast / 365).toFixed(4)
             }
             br[29] = {
                 an: "1990",
-                value: brown[29].forecast
+                value: (brown[29].forecast / 365).toFixed(4)
             }
             br[30] = {
                 an: "1991",
-                value: brown[30].forecast
+                value: (brown[30].forecast / 365).toFixed(4)
             }
             br[38] = {
                 an: "1999",
-                value: brown[38].forecast
+                value: (brown[38].forecast / 365).toFixed(4)
             }
             br[39] = {
                 an: "2000",
-                value: brown[39].forecast
+                value: (brown[39].forecast / 365).toFixed(4)
             }
             br[47] = {
                 an: "2008",
-                value: brown[47].forecast
+                value: (brown[47].forecast / 365).toFixed(4)
             }
             br[48] = {
                 an: "2009",
-                value: brown[48].forecast
+                value: (brown[48].forecast / 365).toFixed(4)
             }
             br[53] = {
                 an: "2014",
-                value: brown[53].forecast
+                value: (brown[53].forecast / 365).toFixed(4)
             }
             br[54] = {
                 an: "2015",
-                value: brown[54].forecast
+                value: (brown[54].forecast / 365).toFixed(4)
             }
 
         }
         var hl = []
-        for (var i = 0; i < 56; i++) {
+        for (var i = 0; i < 60; i++) {
             hl[i] = {
                 an: holt[i].an,
-                value: holt[i].forecast
+                value: (holt[i].forecast / 365).toFixed(4)
             }
             hl[19] = {
                 an: "1980",
-                value: parseInt(holt[19].forecast)
+                value: (parseInt(holt[19].forecast) / 365).toFixed(4)
             }
             hl[23] = {
                 an: "1984",
-                value: parseInt(holt[23].forecast)
+                value: (parseInt(holt[23].forecast) / 365).toFixed(4)
             }
             hl[30] = {
                 an: "1991",
-                value: parseInt(holt[30].forecast)
+                value: (parseInt(holt[30].forecast) / 365).toFixed(4)
             }
             hl[39] = {
                 an: "2000",
-                value: parseInt(holt[39].forecast)
+                value: (parseInt(holt[39].forecast) / 365).toFixed(4)
             }
             hl[48] = {
                 an: "2009",
-                value: parseInt(holt[48].forecast)
+                value: (parseInt(holt[48].forecast) / 365).toFixed(4)
             }
             hl[54] = {
                 an: "2015",
-                value: parseInt(holt[54].forecast)
+                value: (parseInt(holt[54].forecast) / 365).toFixed(4)
             }
         }
         big = [real, br, hl];
@@ -1604,6 +1732,8 @@ $(function () {
                 title: "Chart reprezentand Datele reale, Datele obtinute prin Brown si datele obtinute prin Holt",
                 description: "This line chart contains multiple lines.",
                 data: data,
+                min_y: -1.5,
+                max_y: 4,
                 width: 1300,
                 height: 500,
                 right: 40,
