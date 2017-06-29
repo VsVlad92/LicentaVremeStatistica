@@ -1398,6 +1398,7 @@ $(function () {
                 grid: true,
                 grid_num: 11,
                 onFinish: function (data) {
+                    var eroareTotal = 0
                     console.log("selectat", data);
                     ReTableBrown(data);
                 }
@@ -1420,13 +1421,15 @@ $(function () {
 
             $("#tabel3").append("<tr class=tabel3>" + "<td>" + an + "</td>" + "<td>" + alfa + "</td>" + "<td>" + s1 + "</td>" + "<td>" + s2 + "</td>" + "<td>" + reall + "</td>" + "<td>" + prezis + "</td>" + "<td>" + Eroare.toFixed(4) + "</td>" +"<td>" + eroareTotal + "</td>" + "</tr>");
         }
-
+        
+        var eroareTotal = 0
         function ReTableBrown(data) {
             $("#tabel3").remove();
             $("#tab3").append("<tbody id=tabel3></tbody>");
             var x = data.from - 1961;
             var j = 2016 - data.to;
             var z = 55 - j;
+            eroareTotal = 0
             console.log("de la ", x, "pana la ", j, "Cate ", z);
             for (var i = x; i < z + 1; i++) {
                 if (i == 18 || i == 22 || i == 29 || i == 38 || i == 53 || i == 18 || i == 47) { i++ }
@@ -1567,6 +1570,7 @@ $(function () {
             var x = data.from - 1961;
             var j = 2016 - data.to;
             var z = 55 - j;
+            eroareTotal = 0
             for (var i = x; i < z + 1; i++) {
                 var an = holt[i].an;
                 var alfa = holt[i].alfa;

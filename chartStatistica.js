@@ -30,7 +30,7 @@ function Chart(data){
         "bullet": "round",
         "bulletBorderAlpha": 1,
         "bulletColor": "#FFFFFF",
-        "bulletSize": 5,
+        "bulletSize": 3,
         "hideBulletsCount": 50,
         "lineColor": "#d1655d",
 	    "lineThickness": 2,
@@ -38,7 +38,7 @@ function Chart(data){
         "title": "red line",
         "useLineColorForBulletBorder": true,
         "valueField": "Tmed",
-        "balloonText": "<span style='font-size:18px;'>[[nume]] : [[Tmed]]℃</span>"
+        "balloonText": "<span style='font-size:18px;'>[[Tmed]]℃</span>"
     }],
     "chartScrollbar": {
         "graph": "g2",
@@ -123,13 +123,13 @@ function Chartan(data){
         "bullet": "round",
         "bulletBorderAlpha": 1,
         "bulletColor": "#FFFFFF",
-        "bulletSize": 5,
+        "bulletSize": 3,
         "hideBulletsCount": 50,
         "lineThickness": 2,
         "title": "red line",
         "useLineColorForBulletBorder": true,
         "valueField": "TMED",
-        "balloonText": "<span style='font-size:18px;'>[[CODST]] : [[TMED]]℃</span>"
+        "balloonText": "<span style='font-size:10px;'>[[CODST]] : [[TMED]]℃</span>"
     }],
     "chartScrollbar": {
         "graph": "g2",
